@@ -1,0 +1,43 @@
+<nav class="Navbar">
+  <div class="container">
+    <div class="izq">
+      <img
+        src="assets/Logo.png"
+        alt="Logo #YoProgramo"
+        class="Navbar_logo"
+        width="43"
+        height="34"
+      />
+      <h1>#YoProgramo</h1>
+      <h6 style="color: red">{{ env }}</h6>
+      <h6>PREVIEW</h6>
+    </div>
+    <div class="der">
+      <app-btn-red-social
+        imageURL="assets/icons/github.svg"
+        alt="Github logo"
+        (click)="goTo('Github')"
+      ></app-btn-red-social>
+      <app-btn-red-social
+        imageURL="assets/icons/linkedin.svg"
+        alt="Linkedin logo"
+        (click)="goTo('Linkedin')"
+      ></app-btn-red-social>
+      <!-- <img
+        src="assets/icons/github.svg"
+        alt="Logo #YoProgramo"
+        width="40"
+        height="40"
+        class="iconBtn"
+      /> -->
+      <!-- <img
+        src="assets/icons/linkedin.svg"
+        alt="Logo #YoProgramo"
+        width="45"
+        height="45"
+        class="iconBtn"
+      /> -->
+      <button>Login</button>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,53 @@
+.Navbar {
+  background-color: #161616;
+  height: 60px;
+}
+
+.Navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.Navbar .container h1 {
+  font-family: "Montserrat500";
+  margin: 0;
+  margin-left: 16px;
+  text-align: center;
+  color: #fff;
+}
+
+.izq {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.der {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 200px;
+  height: 45px;
+}
+
+.Navbar button {
+  background-color: transparent;
+  color: #00a124;
+  border: 3px solid #00a124;
+  border-radius: 11px;
+  width: 74px;
+  height: 39px;
+  transition: all 0.5s ease;
+}
+
+.Navbar button:hover {
+  color: white;
+  background: #00a124;
+  transition: all 0.5s ease;
+}
+
+.Navbar .iconBtn {
+  cursor: pointer;
+}
