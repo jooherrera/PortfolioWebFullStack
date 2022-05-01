@@ -1,0 +1,24 @@
+.Soft_Item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.Box_Total {
+  width: 80%;
+  height: 20px;
+  background-color: rgb(218, 212, 212);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.Box_Porcentaje {
+  width: 70%;
+  height: 100%;
+  background-color: #00a124;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

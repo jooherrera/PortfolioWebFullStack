@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutComponent } from './components/about/about.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { SkillsComponent } from './components/skills/skills.component';
+import { SoftComponent } from './components/soft/soft.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SkillsComponent } from './components/skills/skills.component';
     AboutComponent,
     ExperienceComponent,
     SkillsComponent,
+    SoftComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
