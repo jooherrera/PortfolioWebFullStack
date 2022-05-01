@@ -1,0 +1,46 @@
+.Project_Item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
+.Project_Item h2 {
+  font-family: "Montserrat500";
+  font-weight: bold;
+  color: #363636;
+}
+
+.Project_Item h3 {
+  font-family: "Lato400";
+  font-size: 1rem;
+}
+
+.Project_Item h4 {
+  font-weight: bold;
+  color: #0094ff;
+}
+
+.Project_Item__GithubBox {
+  width: 30px;
+  height: 30px;
+}
+.Project_Item__GithubBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.Project_Item__Box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Project_Item__Box h5 {
+  margin: 0;
+  margin-left: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+}

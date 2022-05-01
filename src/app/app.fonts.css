@@ -6,3 +6,7 @@
   font-family: Montserrat400;
   src: url("/assets/fonts/Montserrat.400.ttf");
 }
+@font-face {
+  font-family: Lato400;
+  src: url("/assets/fonts/Lato.400.ttf");
+}

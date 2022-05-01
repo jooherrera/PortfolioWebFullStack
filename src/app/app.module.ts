@@ -12,6 +12,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { SoftComponent } from './components/soft/soft.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SoftComponent } from './components/soft/soft.component';
     ExperienceComponent,
     SkillsComponent,
     SoftComponent,
+    ProjectsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
