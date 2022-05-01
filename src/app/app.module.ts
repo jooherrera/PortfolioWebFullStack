@@ -9,6 +9,7 @@ import { BtnRedSocialComponent } from './components/navbar/btn-red-social/btn-re
 import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutComponent } from './components/about/about.component';
+import { ExperienceComponent } from './components/experience/experience.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AboutComponent } from './components/about/about.component';
     BtnRedSocialComponent,
     HeaderComponent,
     AboutComponent,
+    ExperienceComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],

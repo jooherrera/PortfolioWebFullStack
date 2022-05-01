@@ -1,0 +1,10 @@
+hr {
+  width: 75%;
+  margin: 20px auto;
+}
+
+@media (min-width: 576px) {
+  hr {
+    display: none;
+  }
+}
