@@ -3,8 +3,28 @@ hr {
   margin: 20px auto;
 }
 
+.Recuadro {
+  width: 100%;
+}
+
+.Recuadro .Title {
+  font-family: "Montserrat500";
+  font-weight: bold;
+  color: #363636;
+  margin-left: 5px;
+}
+
 @media (min-width: 576px) {
   hr {
     display: none;
+  }
+  .Recuadro {
+    margin-top: 10px;
+    border-radius: 30px;
+    border: 1px solid #cccccc;
+  }
+
+  .Recuadro .Title {
+    margin-top: 10px;
   }
 }
