@@ -24,7 +24,15 @@
         (click)="goTo('Linkedin')"
         class="d-none d-md-block p-1"
       ></app-btn-red-social>
-      <button class="m-1">Login</button>
+      <button
+        class="m-1"
+        (click)="openLoginModal()"
+        [class]="isLogged ? 'isLogged' : 'notLogged'"
+      >
+        {{ isLogged ? "LogOut" : "LogIn" }}
+      </button>
     </div>
   </div>
 </nav>
+
+<app-modal [isModalOpen]="showLoginModal" (onLogin)="login($event)"></app-modal>

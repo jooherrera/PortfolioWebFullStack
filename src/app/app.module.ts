@@ -14,6 +14,8 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { SoftComponent } from './components/soft/soft.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from './components/modal/modal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,15 @@ import { HttpClientModule } from '@angular/common/http';
     SkillsComponent,
     SoftComponent,
     ProjectsComponent,
+    ModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

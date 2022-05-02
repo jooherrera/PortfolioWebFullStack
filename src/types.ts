@@ -1,3 +1,8 @@
+export type Credenciales = {
+  user: string;
+  password: string;
+};
+
 export type Profile = {
   name: string;
   title: string;

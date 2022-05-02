@@ -1,0 +1,36 @@
+<div id="openModal" [class]="isModalOpen ? 'show ' : 'modalDialog'">
+  <div>
+    <h2 class="Title">LOGIN</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3 inputContainer">
+        <label for="user" class="form-label">Usuario</label>
+        <input
+          type="text"
+          class="form-control"
+          name="user"
+          id="user"
+          [(ngModel)]="user"
+        />
+      </div>
+      <div class="mb-3 inputContainer">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          id="password"
+          [(ngModel)]="password"
+        />
+      </div>
+      <div class="d-flex justify-content-around w-100">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+        <input
+          type="button"
+          value="Cerrar"
+          class="btn btn-danger"
+          (click)="closeLoginModal()"
+        />
+      </div>
+    </form>
+  </div>
+</div>

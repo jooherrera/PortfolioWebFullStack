@@ -41,17 +41,33 @@
   color: #fff;
 }
 
-.Navbar button {
-  background-color: transparent;
-  color: #00a124;
-  border: 3px solid #00a124;
+button {
   border-radius: 11px;
   width: 74px;
   height: 39px;
   transition: all 0.5s ease;
 }
-.Navbar button:hover {
+
+.notLogged {
+  background-color: transparent;
+  color: #00a124;
+  border: 3px solid #00a124;
+}
+.notLogged:hover {
   color: white;
   background: #00a124;
+  transition: all 0.5s ease;
+}
+
+.isLogged {
+  background: #a12000;
+  border: 3px solid #a12000;
+  color: white;
+}
+
+.isLogged:hover {
+  color: #a12000;
+  background-color: transparent;
+
   transition: all 0.5s ease;
 }
