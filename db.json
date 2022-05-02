@@ -1,3 +1,193 @@
 {
-  "profile": {}
+  "profile": {
+    "name": "Jose Herrera",
+    "title": "FullStack Developer Jr",
+    "from": "Buenos Aires (Argentina)",
+    "contactInfo": {
+      "phone": "+54 9 1127748848",
+      "mail": "jooherrera4@gmail.com",
+      "linkedin": "linkedin.com/in/herrera-jl"
+    },
+    "about": {
+      "title": "Acerca de",
+      "items": [
+        "Soy un desarrollador que le encanta estudiar y poner en práctica sus conocimientos, creando soluciones con tecnologías como: NodeJs, React, MongoDB."
+      ]
+    },
+    "experience": {
+      "title": "Experiencia",
+      "items": [
+        {
+          "logoUrl": "assets/empresa.png",
+          "title": "Backend",
+          "company": "Pixar - Jornada completa",
+          "date": "Mar 2019 - Actualidad"
+        },
+        {
+          "logoUrl": "assets/empresa.png",
+          "title": "FullStack developer",
+          "company": "NiIdea - Jornada completa",
+          "date": "May 2022 - Actualidad"
+        }
+      ]
+    },
+    "education": {
+      "title": "Estudios",
+      "items": [
+        {
+          "logoUrl": "assets/ungs.jpg",
+          "name": "Universidad Nacional de General Sarmiento",
+          "title": "Tecnicatura Universitaria en Informática",
+          "date": "Mar 2021 - presente",
+          "extra": "Actualmente cursando el primer año de la carrera"
+        },
+        {
+          "logoUrl": "assets/eet.png",
+          "name": "E.E.T N° 1 de Grand Bourg",
+          "title": "Técnico en Informática personal y profesional",
+          "date": "2010 - 2012",
+          "extra": ""
+        }
+      ]
+    },
+    "curso": {
+      "title": "Cursos",
+      "schools": [
+        {
+          "company": "Coderhouse",
+          "class": [
+            {
+              "title": "Programación Backend",
+              "date": "Enero 2022",
+              "certificate": "coderhouse.com/certificados/6211c271a96d20004f5d5a1d"
+            },
+            {
+              "title": "React Js",
+              "date": "Julio 2021",
+              "certificate": "coderhouse.com/certificados/6111a03d6b58dc00102c7285"
+            },
+            {
+              "title": "JavaScript",
+              "date": "Abril 2021",
+              "certificate": "coderhouse.com/certificados/608d6a2c1324e2000fe05e1f"
+            },
+            {
+              "title": "Desarrollo Web",
+              "date": "Enero 2021",
+              "certificate": "coderhouse.com/certificados/6016e67ca7086f008fc05879"
+            }
+          ]
+        },
+        {
+          "company": "Platzi",
+          "class": [
+            {
+              "title": "Curso Básico de JavaScript",
+              "date": "Julio 2021",
+              "certificate": "https://platzi.com/p/jooherrera/curso/1814-basico-javascript/diploma/detalle/"
+            },
+            {
+              "title": "Curso Básico de Programación Orientada a Objetos con JavaScript",
+              "date": "Febrero 2022",
+              "certificate": "https://platzi.com/p/jooherrera/curso/2332-javascript-poo/diploma/detalle/"
+            },
+            {
+              "title": "Curso de Asincronismo con JavaScript",
+              "date": "Agosto 2021",
+              "certificate": "https://platzi.com/p/jooherrera/curso/1789-asincronismo-js/diploma/detalle/"
+            },
+            {
+              "title": "Curso de Backend con Node.js: API REST con Express.js",
+              "date": "Marzo 2022",
+              "certificate": "https://platzi.com/p/jooherrera/curso/2485-backend-nodejs/diploma/detalle/"
+            },
+            {
+              "title": "Curso de Closures y Scope en JavaScript",
+              "date": "Agosto 2021",
+              "certificate": "https://platzi.com/p/jooherrera/curso/1807-scope/diploma/detalle/"
+            },
+            {
+              "title": "Curso de Computación Básica 2019",
+              "date": "Julio 2021",
+              "certificate": "https://platzi.com/p/jooherrera/curso/1741-computacion-basica-2019/diploma/detalle/"
+            },
+            {
+              "title": "Curso de ECMAScript 6+",
+              "date": "Agosto 2021",
+              "certificate": "https://platzi.com/p/jooherrera/curso/1815-ecmascript-6/diploma/detalle/"
+            }
+          ]
+        }
+      ]
+    },
+    "hardSkill": {
+      "title": "Hard Skills",
+      "items": [
+        {
+          "name": "JavaScript",
+          "logoUrl": "/assets/iconSkills/js.png"
+        },
+        {
+          "name": "Angular",
+          "logoUrl": "/assets/iconSkills/Angular.png"
+        },
+        {
+          "name": "MySql",
+          "logoUrl": "/assets/iconSkills/mySQL.png"
+        },
+        {
+          "name": "NodeJs",
+          "logoUrl": "/assets/iconSkills/node.png"
+        }
+      ]
+    },
+    "softSkill": {
+      "title": "Soft Skills",
+      "items": [
+        {
+          "name": "Capacidad resolutiva",
+          "porcent": 60
+        },
+        {
+          "name": "Trabajo en equipo",
+          "porcent": 85
+        },
+        {
+          "name": "Gestión del tiempo",
+          "porcent": 76
+        },
+        {
+          "name": "Autodidacta",
+          "porcent": 90
+        },
+        {
+          "name": "Calidad",
+          "porcent": 77
+        }
+      ]
+    },
+    "project": {
+      "title": "Proyectos",
+      "items": [
+        {
+          "name": "e-Commerce",
+          "description": "Desarrollé un sitio web de comercio electrónico basado en ReactJs, con un Backend que provee información de los productos y los usuarios registrados de una base de datos en MongoDB.",
+          "webLink": "can-shop.com.ar",
+          "githubLink": ""
+        },
+        {
+          "name": "Portfolio #YoProgramo",
+          "description": "Desarrollé un Portfolio con el FrontEnd basado en Angular, el BackEnd con Java y utilizé MySQL como base de datos.",
+          "webLink": "portfolio-jose-herrera.vercel.app",
+          "githubLink": "github.com/jooherrera/PortfolioWebFullStack"
+        },
+        {
+          "name": "To-Do App",
+          "description": "Desarrollé una aplicación de lista de tareas, basada en ReactJS y utilizando el local storage como persistencia de datos.",
+          "webLink": "to-do-app-khaki.vercel.app",
+          "githubLink": "github.com/jooherrera/To-do.App"
+        }
+      ]
+    }
+  }
 }

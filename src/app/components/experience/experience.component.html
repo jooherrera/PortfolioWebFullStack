@@ -1,35 +1,14 @@
 <div class="container Recuadro">
-  <h2 class="Title">Experiencia</h2>
-  <div class="ExpContainer_item">
+  <h2 class="Title">{{ info?.title }}</h2>
+  <div class="ExpContainer_item" *ngFor="let item of info?.items">
     <div class="ExpContainer_item__imgContainer">
-      <img
-        src="/assets/empresa.png"
-        alt="Logo Empresa"
-        width="auto"
-        height="auto"
-      />
+      <img [src]="item.logoUrl" alt="Logo Empresa" width="auto" height="auto" />
     </div>
     <div>
-      <h2>Backend</h2>
-      <h3>Pixar - Jornada completa</h3>
-      <h4>mar 2019 - actualidad</h4>
-      <h4>{{ Info }}</h4>
-    </div>
-  </div>
-
-  <div class="ExpContainer_item">
-    <div class="ExpContainer_item__imgContainer">
-      <img
-        src="/assets/empresa.png"
-        alt="Logo Empresa"
-        width="auto"
-        height="auto"
-      />
-    </div>
-    <div>
-      <h2>Backend Developer</h2>
-      <h3>Pixar - Jornada completa</h3>
-      <h4>mar 2019 - actualidad</h4>
+      <h2>{{ item.title }}</h2>
+      <h3>{{ item.company || item.title }}</h3>
+      <h4>{{ item.date }}</h4>
+      <h4>{{ item.extra }}</h4>
     </div>
   </div>
 </div>

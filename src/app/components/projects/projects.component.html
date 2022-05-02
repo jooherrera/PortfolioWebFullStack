@@ -1,34 +1,14 @@
 <div class="container Recuadro">
-  <h2 class="Title">Proyectos</h2>
-  <div class="Project_Item">
-    <h2>e-Commerce</h2>
-    <h3>
-      Desarrollé un sitio web de comercio electrónico basado en ReactJs, con un
-      Backend que provee información de los productos y los usuarios registrados
-      de una base de datos en MongoDB.
-    </h3>
-    <h4>can-shop.com.ar</h4>
-    <div class="Project_Item__Box d-none">
-      <div class="Project_Item__GithubBox">
-        <img
-          src="/assets/icons/githubBlack.svg"
-          alt="dsa"
-          width="auto"
-          height="auto"
-        />
-      </div>
-      <h5>LINK GITHUB</h5>
-    </div>
-  </div>
+  <h2 class="Title">{{ info?.title }}</h2>
 
-  <div class="Project_Item">
-    <h2>To-Do App</h2>
+  <div class="Project_Item" *ngFor="let item of info?.items">
+    <h2>{{ item.name }}</h2>
     <h3>
-      Desarrollé una aplicación de lista de tareas, basada en ReactJS y
-      utilizando el local storage como persistencia de datos.
+      {{ item.description }}
     </h3>
-    <h4>to-do-app-khaki.vercel.app</h4>
-    <div class="Project_Item__Box">
+    <h4 (click)="redirect(item.webLink)">{{ item.webLink }}</h4>
+
+    <div class="Project_Item__Box" *ngIf="item.githubLink">
       <div class="Project_Item__GithubBox">
         <img
           src="/assets/icons/githubBlack.svg"
@@ -37,7 +17,7 @@
           height="auto"
         />
       </div>
-      <h5>https://to-do-app-khaki.vercel.app/</h5>
+      <h5 (click)="redirect(item.githubLink)">{{ item.githubLink }}</h5>
     </div>
   </div>
 </div>

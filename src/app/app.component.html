@@ -1,18 +1,20 @@
-<div>
+<div class="mb-5">
   <app-navbar></app-navbar>
-  <app-header></app-header>
+  <app-header
+    name="{{ profileInfo.name }}"
+    title="{{ profileInfo.title }}"
+    from="{{ profileInfo.from }}"
+  ></app-header>
   <hr />
-  <app-about></app-about>
+  <app-about [info]="profileInfo.about!"></app-about>
   <hr />
-  <app-experience></app-experience>
+  <app-experience [info]="profileInfo.experience!"></app-experience>
   <hr />
-  <app-experience
-    Info="Actualmente cursando el primer año de la carrera"
-  ></app-experience>
+  <app-experience [info]="profileInfo.education!"></app-experience>
   <hr />
-  <app-skills></app-skills>
+  <app-skills [info]="profileInfo.hardSkill!"></app-skills>
   <hr />
-  <app-soft></app-soft>
+  <app-soft [info]="profileInfo.softSkill!"></app-soft>
   <hr />
-  <app-projects></app-projects>
+  <app-projects [info]="profileInfo.project!"></app-projects>
 </div>
