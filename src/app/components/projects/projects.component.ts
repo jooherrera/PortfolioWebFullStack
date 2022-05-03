@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UiService } from 'src/app/services/ui.service';
 import { Project } from 'src/types';
 
 @Component({
@@ -8,7 +9,10 @@ import { Project } from 'src/types';
 })
 export class ProjectsComponent implements OnInit {
   @Input() info: Partial<Project> = {};
-  constructor() {}
+  isLogged: boolean = false;
+  constructor(private uiService: UiService) {
+    this.uiService.LogState().subscribe((v) => (this.isLogged = v));
+  }
 
   ngOnInit(): void {}
 

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,10 @@ export class HeaderComponent implements OnInit {
   @Input() name: string = '';
   @Input() title: string = '';
   @Input() from: string = '';
-  constructor() {}
+  isLogged: boolean = false;
+  constructor(private uiService: UiService) {
+    this.uiService.LogState().subscribe((v) => (this.isLogged = v));
+  }
 
   ngOnInit(): void {}
 }

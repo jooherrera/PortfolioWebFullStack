@@ -16,6 +16,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './components/modal/modal.component';
 import { FormsModule } from '@angular/forms';
+import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     SoftComponent,
     ProjectsComponent,
     ModalComponent,
+    EditBtnComponent,
   ],
   imports: [
     BrowserModule,

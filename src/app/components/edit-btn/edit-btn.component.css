@@ -1,0 +1,16 @@
+img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: relative;
+  top: -5px;
+  margin-left: 3px;
+}
+
+.canEdit {
+  display: inline;
+}
+
+.noEdit {
+  display: none;
+}

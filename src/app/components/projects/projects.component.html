@@ -1,15 +1,15 @@
 <div class="container Recuadro">
-  <h2 class="Title">{{ info?.title }}</h2>
+  <h2 class="Title">{{ info?.title }} <editBtn></editBtn></h2>
 
   <div class="Project_Item" *ngFor="let item of info?.items">
-    <h2>{{ item.name }}</h2>
-    <h3>
-      {{ item.description }}
-    </h3>
-    <h4 (click)="redirect(item.webLink)">{{ item.webLink }}</h4>
+    <h2>{{ item.name }} <editBtn></editBtn></h2>
+    <h3>{{ item.description }} <editBtn></editBtn></h3>
+    <h4 (click)="redirect(item.webLink)">
+      {{ item.webLink }} <editBtn></editBtn>
+    </h4>
 
-    <div class="Project_Item__Box" *ngIf="item.githubLink">
-      <div class="Project_Item__GithubBox">
+    <div class="Project_Item__Box">
+      <div class="Project_Item__GithubBox" *ngIf="item.githubLink">
         <img
           src="/assets/icons/githubBlack.svg"
           alt="dsa"
@@ -17,7 +17,9 @@
           height="auto"
         />
       </div>
-      <h5 (click)="redirect(item.githubLink)">{{ item.githubLink }}</h5>
+      <h5 (click)="redirect(item.githubLink)">
+        {{ item.githubLink }} <editBtn></editBtn>
+      </h5>
     </div>
   </div>
 </div>

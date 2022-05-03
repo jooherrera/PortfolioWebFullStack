@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UiService } from 'src/app/services/ui.service';
 import { HardSkill } from 'src/types';
 
 @Component({
@@ -8,7 +9,10 @@ import { HardSkill } from 'src/types';
 })
 export class SkillsComponent implements OnInit {
   @Input() info: Partial<HardSkill> = {};
-  constructor() {}
+  isLogged: boolean = false;
+  constructor(private uiService: UiService) {
+    this.uiService.LogState().subscribe((v) => (this.isLogged = v));
+  }
 
   ngOnInit(): void {}
 }

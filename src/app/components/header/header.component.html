@@ -1,6 +1,7 @@
 <header class="container">
-  <div class="Banner"></div>
-  <div class="Profile">
+  <div class="Banner  {{ isLogged ? 'canClick' : '' }} "></div>
+
+  <div class="Profile  {{ isLogged ? 'canClick' : '' }}">
     <img
       src="/assets/FotoDePerfil.png"
       alt="Foto de perfil"
@@ -8,10 +9,11 @@
       height="auto"
     />
   </div>
+
   <div class="ProfileInfo">
-    <h2>{{ name }}</h2>
-    <h3>{{ title }}</h3>
-    <h3>{{ from }}</h3>
-    <h3 class="Link">Información de contacto</h3>
+    <h2>{{ name }} <editBtn></editBtn></h2>
+    <h3>{{ title }} <editBtn></editBtn></h3>
+    <h3>{{ from }} <editBtn></editBtn></h3>
+    <h3 class="Link">Información de contacto <editBtn></editBtn></h3>
   </div>
 </header>

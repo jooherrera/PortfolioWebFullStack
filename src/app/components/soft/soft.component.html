@@ -1,8 +1,8 @@
 <div class="container Recuadro">
-  <h2 class="Title">{{ info?.title }}</h2>
+  <h2 class="Title">{{ info?.title }} <editBtn></editBtn></h2>
 
   <div class="Soft_Item" *ngFor="let item of info?.items">
-    <h3>{{ item.name }}</h3>
+    <h3>{{ item.name }} <editBtn></editBtn></h3>
     <div class="Box_Total">
       <div class="Box_Porcentaje" style.width="{{ item.porcent }}%"></div>
     </div>

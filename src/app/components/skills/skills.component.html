@@ -1,11 +1,17 @@
 <div class="container Recuadro">
-  <h2 class="Title">{{ info?.title }}</h2>
+  <h2 class="Title">{{ info?.title }} <editBtn></editBtn></h2>
   <div class="SKillContainer">
     <div class="Skill_Item" *ngFor="let item of info?.items">
       <div class="Skill_Item__ImageContainer">
-        <img [src]="item.logoUrl" alt="" width="auto" height="auto" />
+        <img
+          [src]="item.logoUrl"
+          alt=""
+          width="auto"
+          height="auto"
+          [class]="isLogged ? 'canClick' : ''"
+        />
       </div>
-      <h2 class="Skill_Item__Title">{{ item.name }}</h2>
+      <h2 class="Skill_Item__Title">{{ item.name }} <editBtn></editBtn></h2>
     </div>
   </div>
 </div>

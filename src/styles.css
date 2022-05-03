@@ -15,6 +15,10 @@ hr {
   margin-left: 5px;
 }
 
+.canClick {
+  cursor: pointer;
+}
+
 @media (min-width: 576px) {
   hr {
     display: none;

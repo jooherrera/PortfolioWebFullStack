@@ -1,14 +1,20 @@
 <div class="container Recuadro">
-  <h2 class="Title">{{ info?.title }}</h2>
+  <h2 class="Title">{{ info?.title }} <editBtn></editBtn></h2>
   <div class="ExpContainer_item" *ngFor="let item of info?.items">
     <div class="ExpContainer_item__imgContainer">
-      <img [src]="item.logoUrl" alt="Logo Empresa" width="auto" height="auto" />
+      <img
+        [src]="item.logoUrl"
+        alt="Logo Empresa"
+        width="auto"
+        height="auto"
+        [class]="isLogged ? 'canClick' : ''"
+      />
     </div>
     <div>
-      <h2>{{ item.title }}</h2>
-      <h3>{{ item.company || item.title }}</h3>
-      <h4>{{ item.date }}</h4>
-      <h4>{{ item.extra }}</h4>
+      <h2>{{ item.title }} <editBtn></editBtn></h2>
+      <h3>{{ item.company || item.title }} <editBtn> </editBtn></h3>
+      <h4>{{ item.date }} <editBtn></editBtn></h4>
+      <h4>{{ item.extra }} <editBtn></editBtn></h4>
     </div>
   </div>
 </div>

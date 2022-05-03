@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UiService } from 'src/app/services/ui.service';
 import { ExpEducation } from 'src/types';
 
 @Component({
@@ -8,7 +9,10 @@ import { ExpEducation } from 'src/types';
 })
 export class ExperienceComponent implements OnInit {
   @Input() info: Partial<ExpEducation> = {};
-  constructor() {}
+  isLogged: boolean = false;
+  constructor(private uiService: UiService) {
+    this.uiService.LogState().subscribe((v) => (this.isLogged = v));
+  }
 
   ngOnInit(): void {}
 }
