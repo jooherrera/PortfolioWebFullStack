@@ -42,8 +42,9 @@ header {
   font-family: "Montserrat500";
   font-weight: bold;
   font-size: 2rem;
-  color: #363636;
+  /* color: #363636; */
 }
+
 .ProfileInfo h3 {
   font-family: "Montserrat400";
   margin: 3px 0;
@@ -52,6 +53,31 @@ header {
 .Link {
   color: dodgerblue;
   cursor: pointer;
+}
+
+input {
+  /* width: fit-content; */
+
+  /* width: 20px; */
+  max-width: 400px;
+}
+
+input:focus {
+  /* min-width: 100%; */
+}
+.customInput {
+  border: none;
+}
+
+.customInputDisable {
+  pointer-events: none;
+}
+
+.h2 {
+  font-family: "Montserrat500";
+  font-weight: bold;
+  font-size: 3rem;
+  color: #363636;
 }
 
 /* ------------------------------ MEDIA QUERIES ----------------------------- */

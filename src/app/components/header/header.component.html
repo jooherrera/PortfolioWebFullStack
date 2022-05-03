@@ -11,9 +11,11 @@
   </div>
 
   <div class="ProfileInfo">
-    <h2>{{ name }} <editBtn></editBtn></h2>
-    <h3>{{ title }} <editBtn></editBtn></h3>
-    <h3>{{ from }} <editBtn></editBtn></h3>
-    <h3 class="Link">Información de contacto <editBtn></editBtn></h3>
+    <h2 class="">{{ name }} <editBtn *ngIf="isLogged"></editBtn></h2>
+    <h3>{{ title }} <editBtn *ngIf="isLogged"></editBtn></h3>
+    <h3>{{ from }} <editBtn *ngIf="isLogged"></editBtn></h3>
+    <h3 class="Link">
+      Información de contacto <editBtn *ngIf="isLogged"></editBtn>
+    </h3>
   </div>
 </header>

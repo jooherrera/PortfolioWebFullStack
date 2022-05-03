@@ -1,4 +1,6 @@
 <div class="container AboutContainer Recuadro">
-  <h2 class="Title">{{ info?.title }} <editBtn></editBtn></h2>
-  <p *ngFor="let item of info?.items">{{ item }} <editBtn></editBtn></p>
+  <h2 class="Title">{{ info?.title }} <editBtn *ngIf="isLogged"></editBtn></h2>
+  <p *ngFor="let item of info?.items">
+    {{ item }} <editBtn *ngIf="isLogged"></editBtn>
+  </p>
 </div>

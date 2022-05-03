@@ -14,7 +14,7 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { SoftComponent } from './components/soft/soft.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ModalComponent } from './components/modal/modal.component';
+import { ModalComponent } from './components/modalLogin/modal.component';
 import { FormsModule } from '@angular/forms';
 import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
 

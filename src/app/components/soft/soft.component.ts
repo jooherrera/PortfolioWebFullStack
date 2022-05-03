@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UiService } from 'src/app/services/ui.service';
 import { SoftSkill } from 'src/types';
 
 @Component({
@@ -8,7 +9,9 @@ import { SoftSkill } from 'src/types';
 })
 export class SoftComponent implements OnInit {
   @Input() info: Partial<SoftSkill> = {};
-  constructor() {}
-
+  isLogged: boolean = false;
+  constructor(private uiService: UiService) {
+    this.uiService.LogState().subscribe((v) => (this.isLogged = v));
+  }
   ngOnInit(): void {}
 }

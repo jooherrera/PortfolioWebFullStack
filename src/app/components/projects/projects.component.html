@@ -1,11 +1,11 @@
 <div class="container Recuadro">
-  <h2 class="Title">{{ info?.title }} <editBtn></editBtn></h2>
+  <h2 class="Title">{{ info?.title }} <editBtn *ngIf="isLogged"></editBtn></h2>
 
   <div class="Project_Item" *ngFor="let item of info?.items">
-    <h2>{{ item.name }} <editBtn></editBtn></h2>
-    <h3>{{ item.description }} <editBtn></editBtn></h3>
+    <h2>{{ item.name }} <editBtn *ngIf="isLogged"></editBtn></h2>
+    <h3>{{ item.description }} <editBtn *ngIf="isLogged"></editBtn></h3>
     <h4 (click)="redirect(item.webLink)">
-      {{ item.webLink }} <editBtn></editBtn>
+      {{ item.webLink }} <editBtn *ngIf="isLogged"></editBtn>
     </h4>
 
     <div class="Project_Item__Box">
@@ -18,7 +18,7 @@
         />
       </div>
       <h5 (click)="redirect(item.githubLink)">
-        {{ item.githubLink }} <editBtn></editBtn>
+        {{ item.githubLink }} <editBtn *ngIf="isLogged"></editBtn>
       </h5>
     </div>
   </div>

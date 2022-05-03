@@ -7,7 +7,7 @@ import { UiService } from 'src/app/services/ui.service';
   styleUrls: ['./edit-btn.component.css'],
 })
 export class EditBtnComponent implements OnInit {
-  isLogged: boolean = false;
+  isLogged: boolean = true;
 
   constructor(private uiService: UiService) {
     this.uiService.LogState().subscribe((v) => (this.isLogged = v));
