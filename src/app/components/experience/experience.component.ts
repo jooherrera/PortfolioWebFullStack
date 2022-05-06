@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
 import { ExpEducation, ExpEducationItem, UpdateKey } from 'src/types';
 
@@ -10,10 +12,17 @@ import { ExpEducation, ExpEducationItem, UpdateKey } from 'src/types';
 export class ExperienceComponent implements OnInit {
   @Input() info: Partial<ExpEducation> = {};
   items: ExpEducationItem[] = [];
+  @Input() isExperiencia: boolean = false;
+  jwtValue: string = 'EXP COMPONENT _ JWT DE PRUEBA';
 
   isLogged: boolean = false;
-  constructor(private uiService: UiService) {
+  constructor(
+    private uiService: UiService,
+    private profileService: ProfileService,
+    private authService: AuthService
+  ) {
     this.uiService.LogState().subscribe((v) => (this.isLogged = v));
+    this.authService.JwtState().subscribe((v) => (this.jwtValue = v));
   }
 
   ngOnInit(): void {}
@@ -29,11 +38,15 @@ export class ExperienceComponent implements OnInit {
           item[`${newValue.key}`] = newValue.value;
         }
       });
+
+      this.profileService
+        .updateExp({ items: this.items }, this.jwtValue)
+        .subscribe((v) => console.log('Actualizado'));
+
       this.info = {
         ...this.info,
         items: this.items,
       };
-      console.log(this.info);
       return;
     }
 
@@ -41,6 +54,18 @@ export class ExperienceComponent implements OnInit {
       ...this.info,
       [newValue.key]: newValue.value,
     };
-    console.log(this.info);
+
+    this.profileService
+      .updateExp({ [newValue.key]: newValue.value }, this.jwtValue)
+      .subscribe((v) => console.log('Actualizado'));
+  }
+
+  onAddItem() {
+    if (this.isExperiencia) {
+      this.profileService.addExpItem(this.jwtValue);
+    }
+  }
+  onRemoveItem(id: number) {
+    console.log(id);
   }
 }

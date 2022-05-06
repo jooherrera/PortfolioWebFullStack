@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { About, ProfileInfo } from 'src/types';
+import { About, ExpEducation, ProfileInfo } from 'src/types';
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +23,17 @@ export class ProfileService {
     console.log(info);
     console.log('token: ' + jwt);
     return this.http.patch<ProfileInfo>(`${this.url}/profile-info`, info);
+  }
+
+  updateExp(
+    info: Partial<ExpEducation>,
+    jwt: string
+  ): Observable<ExpEducation> {
+    console.log(info);
+    return this.http.patch<ExpEducation>(`${this.url}/experience`, info);
+  }
+
+  addExpItem(jwt: string) {
+    console.log(jwt);
   }
 }

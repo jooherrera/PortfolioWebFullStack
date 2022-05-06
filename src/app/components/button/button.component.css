@@ -1,0 +1,8 @@
+img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  position: relative;
+  cursor: pointer;
+  margin: 0px 15px;
+}

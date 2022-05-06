@@ -7,6 +7,7 @@
       value="{{ info?.title }}"
       (updatedValue)="onUpdatedValue($event)"
     ></editBtn>
+    <addBtn *ngIf="isLogged" [addBtn]="true" (click)="onAddItem()"></addBtn>
   </h2>
 
   <div class="ExpContainer_item" *ngFor="let item of info?.items">
@@ -37,6 +38,11 @@
           (updatedValue)="onUpdatedValue($event)"
           [id]="item.id"
         ></editBtn>
+        <addBtn
+          *ngIf="isLogged"
+          [removeBtn]="true"
+          (click)="onRemoveItem(item.id)"
+        ></addBtn>
       </h2>
       <h3>
         {{ item.company || item.title }}

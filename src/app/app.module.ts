@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
 import { EditableComponent } from './components/editable/editable.component';
 import { CursoComponent } from './components/curso/curso.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CursoComponent } from './components/curso/curso.component';
     EditBtnComponent,
     EditableComponent,
     CursoComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
