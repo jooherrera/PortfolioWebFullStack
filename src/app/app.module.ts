@@ -18,6 +18,7 @@ import { ModalComponent } from './components/modalLogin/modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
 import { EditableComponent } from './components/editable/editable.component';
+import { CursoComponent } from './components/curso/curso.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { EditableComponent } from './components/editable/editable.component';
     ModalComponent,
     EditBtnComponent,
     EditableComponent,
+    CursoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ProfileService } from 'src/app/services/profile.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { UiService } from 'src/app/services/ui.service';
 import { environment } from 'src/environments/environment';
 import { Credenciales } from 'src/types';
@@ -25,10 +25,7 @@ export class NavbarComponent implements OnInit {
   subscription?: Subscription;
   subscriptionLog?: Subscription;
 
-  constructor(
-    private uiService: UiService,
-    private profileService: ProfileService
-  ) {
+  constructor(private uiService: UiService, private authService: AuthService) {
     this.subscription = this.uiService
       .LoginModalState()
       .subscribe((v) => (this.showLoginModal = v));
@@ -56,7 +53,7 @@ export class NavbarComponent implements OnInit {
 
   login(credenciales: Credenciales) {
     try {
-      const resp = this.profileService.login(credenciales);
+      const resp = this.authService.login(credenciales);
       if (!resp) throw new Error(`Usuario o contraseña incorrecto.`);
       this.uiService.closeLoginModal();
       this.uiService.logIn();

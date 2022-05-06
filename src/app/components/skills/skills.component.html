@@ -19,11 +19,21 @@
           height="auto"
           [class]="isLogged ? 'canClick' : ''"
         />
+        <editBtn
+          *ngIf="isLogged"
+          key="logoUrl"
+          value="{{ item.logoUrl }}"
+          [fileUpload]="true"
+          (updatedValue)="onUpdatedValue($event)"
+          [position]="i"
+        ></editBtn>
       </div>
-      {{ item.name }}
+      <h6 class="m-0 ms-2">
+        {{ item.name }}
+      </h6>
       <editBtn
         *ngIf="isLogged"
-        [key]="item.name"
+        key="name"
         [value]="item.name"
         (updatedValue)="onUpdatedValue($event)"
         [position]="i"

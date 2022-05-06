@@ -25,7 +25,7 @@ export class SkillsComponent implements OnInit {
     if (newValue.position !== undefined) {
       this.items[newValue.position] = {
         ...this.items[newValue.position],
-        name: newValue.value,
+        [`${newValue.key}`]: newValue.value,
       };
       this.info = {
         ...this.info,

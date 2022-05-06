@@ -1,22 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Credenciales, Profile } from 'src/types';
+import { About, ProfileInfo } from 'src/types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProfileService {
-  url = 'http://192.168.1.108:5000';
+  url = 'http://192.168.1.108:5001';
   constructor(private http: HttpClient) {}
 
-  getProfile(): Observable<Profile> {
-    return this.http.get<Profile>(`${this.url}/profile`);
+  updateAbout(info: Partial<About>, jwt: string): Observable<About> {
+    console.log(info);
+    console.log('token: ' + jwt);
+    return this.http.patch<About>(`${this.url}/about`, info);
   }
 
-  login(credenciales: Credenciales) {
-    console.log(credenciales);
-    console.log('Obtener JWT');
-    return true;
+  updateProfile(
+    info: Partial<ProfileInfo>,
+    jwt: string
+  ): Observable<ProfileInfo> {
+    console.log(info);
+    console.log('token: ' + jwt);
+    return this.http.patch<ProfileInfo>(`${this.url}/profile-info`, info);
   }
 }

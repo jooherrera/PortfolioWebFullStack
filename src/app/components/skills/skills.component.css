@@ -1,6 +1,6 @@
 .SKillContainer {
   display: grid;
-  margin-left: 50px;
+  margin-left: 25px;
   grid-template-columns: 1fr 1fr;
 }
 
@@ -8,12 +8,15 @@
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+
   margin: 10px 0;
 }
 
 .Skill_Item__ImageContainer {
-  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
   height: 40px;
+  position: relative;
 }
 
 .Skill_Item__ImageContainer img {
@@ -37,6 +40,7 @@
   }
   .SKillContainer {
     display: flex;
+    margin-left: 50px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;

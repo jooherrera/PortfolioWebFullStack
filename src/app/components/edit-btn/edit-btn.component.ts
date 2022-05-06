@@ -46,9 +46,6 @@ export class EditBtnComponent implements OnInit {
       reader.onload = () => {
         this.value = reader.result as string;
         this.isImgSrc = true;
-        // this.myForm.patchValue({
-        //   fileSource: reader.result,
-        // });
       };
     }
   }
@@ -64,15 +61,12 @@ export class EditBtnComponent implements OnInit {
   }
 
   onSubmit() {
-    // if (this.fileUpload) {
-    //   console.log(this.value);
-
-    //   return;
-    // }
-
-    if (!this.isImgSrc) {
-      alert('No hay imagen.');
-      return;
+    if (this.fileUpload) {
+      if (!this.isImgSrc) {
+        alert('No hay imagen.');
+        return;
+      }
+      console.log(this.value);
     }
 
     const body: UpdateKey = {
@@ -83,6 +77,5 @@ export class EditBtnComponent implements OnInit {
     };
     this.updatedValue.emit(body);
     this.onCloseEdit();
-    console.log(body);
   }
 }

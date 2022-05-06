@@ -9,8 +9,8 @@
     ></editBtn>
   </h2>
 
-  <div class="ExpContainer_item" *ngFor="let item of info?.items">
-    <div class="ExpContainer_item__imgContainer">
+  <div class="Curso_item" *ngFor="let item of info?.schools">
+    <div class="Curso_item__imgContainer">
       <img
         [src]="item.logoUrl"
         alt="Logo Empresa"
@@ -29,16 +29,26 @@
     </div>
     <div>
       <h2>
-        {{ item.name }}
+        {{ item.company }}
         <editBtn
           *ngIf="isLogged"
-          key="name"
-          value="{{ item.name }}"
+          key="company"
+          value="{{ item.company }}"
           (updatedValue)="onUpdatedValue($event)"
           [id]="item.id"
         ></editBtn>
       </h2>
-      <h3>
+      <div class="ClassItem" *ngFor="let clase of item.class">
+        <h3>
+          {{ clase.title }}
+        </h3>
+        <h4>
+          {{ clase.date }}
+        </h4>
+        <h4 class="Link" (click)="redirect(clase.certificate)">Certificado</h4>
+      </div>
+
+      <!-- <h3>
         {{ item.company || item.title }}
         <editBtn
           *ngIf="isLogged"
@@ -67,7 +77,7 @@
           (updatedValue)="onUpdatedValue($event)"
           [id]="item.id"
         ></editBtn>
-      </h4>
+      </h4> -->
     </div>
   </div>
 </div>

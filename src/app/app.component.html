@@ -1,17 +1,12 @@
 <div class="mb-5">
   <app-navbar></app-navbar>
-  <app-header
-    name="{{ profileInfo.name }}"
-    title="{{ profileInfo.title }}"
-    from="{{ profileInfo.from }}"
-    imgProfile="{{ profileInfo.imgProfile }}"
-    imgBanner="{{ profileInfo.imgBanner }}"
-    [info]="profileInfo.contactInfo!"
-  ></app-header>
+  <app-header [info]="profileInfo.profileInfo!"></app-header>
   <hr />
   <app-about [info]="profileInfo.about!"></app-about>
   <hr />
   <app-experience [info]="profileInfo.experience!"></app-experience>
+  <hr />
+  <app-curso [info]="profileInfo.curso!"></app-curso>
   <hr />
   <app-experience [info]="profileInfo.education!"></app-experience>
   <hr />

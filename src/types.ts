@@ -12,12 +12,7 @@ export type UpdateKey = {
 };
 
 export type Profile = {
-  name: string;
-  title: string;
-  from: string;
-  imgProfile: string;
-  imgBanner: string;
-  contactInfo: ContactInfo;
+  profileInfo: ProfileInfo;
   about: About;
   experience: ExpEducation;
   education: ExpEducation;
@@ -25,6 +20,18 @@ export type Profile = {
   hardSkill: HardSkill;
   softSkill: SoftSkill;
   project: Project;
+};
+
+export type ProfileInfo = {
+  [key: string]: string;
+  name: string;
+  title: string;
+  from: string;
+  imgProfile: string;
+  imgBanner: string;
+  phone: string;
+  mail: string;
+  linkedin: string;
 };
 
 export type Project = {
@@ -57,15 +64,20 @@ export type HardSkillItem = {
   name: string;
   logoUrl: string;
 };
-type Curso = {
+export type Curso = {
   title: string;
   schools: SchoolItem[];
 };
-type SchoolItem = {
+export type SchoolItem = {
+  [key: string]: string | number | SchoolClass[];
+  id: number;
+  logoUrl: string;
   company: string;
   class: SchoolClass[];
 };
-type SchoolClass = {
+export type SchoolClass = {
+  [key: string]: string | number;
+  id: number;
   title: string;
   date: string;
   certificate: string;
@@ -84,11 +96,7 @@ export type ExpEducationItem = {
   date: string;
   extra: string;
 };
-export type ContactInfo = {
-  phone: string;
-  mail: string;
-  linkedin: string;
-};
+
 export type About = {
   title: string;
   items: string[];
