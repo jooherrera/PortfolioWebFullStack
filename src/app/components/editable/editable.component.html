@@ -1,0 +1,103 @@
+<div class="fieldContainer" (click)="divClick()" *ngIf="!withPorcent">
+  <img
+    src="/assets/icons/check.svg"
+    alt="boton de editar"
+    width="20px"
+    height="20px"
+    class=""
+    *ngIf="onEdit"
+    (click)="onAccept()"
+  />
+  <img
+    src="/assets/icons/wrong.svg"
+    alt="boton de editar"
+    width="20px"
+    height="20px"
+    class=""
+    *ngIf="onEdit"
+    (click)="onDecline()"
+  />
+
+  <input
+    *ngIf="!paragraph"
+    type="text"
+    [(ngModel)]="data"
+    (click)="onClicked()"
+    (keydown.enter)="onAccept(); field.blur()"
+    (keydown.esc)="onDecline(); field.blur()"
+    [disabled]="!onLogged"
+    class="{{ heading }} {{ onLogged && 'linkeable' }} {{
+      !onLogged && isLinkeable && 'linkeable'
+    }} {{ !data && 'off' }}  "
+    #field
+  />
+
+  <input
+    #field
+    *ngIf="paragraph"
+    [(ngModel)]="data"
+    (click)="onClicked()"
+    (keydown.enter)="onAccept(); field.blur()"
+    (keydown.esc)="onDecline(); field.blur()"
+    [disabled]="!onLogged"
+    class="{{ heading }} {{ onLogged && 'linkeable' }} {{
+      !onLogged && isLinkeable && 'linkeable'
+    }}"
+  />
+
+  <input
+    type="range"
+    #porcent
+    *ngIf="withPorcent && onLogged"
+    [(ngModel)]="dataPorcent"
+  />
+</div>
+
+<div class="'Soft_Item'" (click)="divClick()" *ngIf="withPorcent">
+  <div class="d-flex justify-content-center">
+    <img
+      src="/assets/icons/check.svg"
+      alt="boton de editar"
+      width="20px"
+      height="20px"
+      class=""
+      *ngIf="onEdit"
+      (click)="onAccept()"
+    />
+    <img
+      src="/assets/icons/wrong.svg"
+      alt="boton de editar"
+      width="20px"
+      height="20px"
+      class=""
+      *ngIf="onEdit"
+      (click)="onDecline()"
+    />
+
+    <input
+      *ngIf="!paragraph"
+      type="text"
+      [(ngModel)]="data"
+      (click)="onClicked()"
+      (keydown.enter)="onAccept(); field.blur()"
+      (keydown.esc)="onDecline(); field.blur()"
+      [size]="data.length + 1"
+      [disabled]="!onLogged"
+      class="{{ heading }} {{ onLogged && 'linkeable' }} {{
+        !onLogged && isLinkeable && 'linkeable'
+      }} {{ !data && 'off' }}  "
+      #field
+    />
+
+    <input
+      type="range"
+      #porcent
+      *ngIf="withPorcent && onLogged"
+      [(ngModel)]="dataPorcent"
+      (click)="onClicked()"
+    />
+  </div>
+  <div class="Box_Total" *ngIf="withPorcent">
+    <div class="Box_Porcentaje" style.width="{{ dataPorcent }}%"></div>
+  </div>
+</div>

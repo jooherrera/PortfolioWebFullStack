@@ -7,7 +7,7 @@ import { Credenciales, Profile } from 'src/types';
   providedIn: 'root',
 })
 export class ProfileService {
-  url = 'http://localhost:5000';
+  url = 'http://192.168.1.108:5000';
   constructor(private http: HttpClient) {}
 
   getProfile(): Observable<Profile> {

@@ -1,6 +1,23 @@
-<div class="container AboutContainer Recuadro">
-  <h2 class="Title">{{ info?.title }} <editBtn *ngIf="isLogged"></editBtn></h2>
-  <p *ngFor="let item of info?.items">
-    {{ item }} <editBtn *ngIf="isLogged"></editBtn>
+<div class="container Recuadro">
+  <!-- <editable data="{{ info?.title }}" heading="Title"></editable> -->
+  <h2>
+    {{ info?.title }}
+    <editBtn
+      *ngIf="isLogged"
+      key="title"
+      value="{{ info?.title }}"
+      (updatedValue)="onUpdatedValue($event)"
+    ></editBtn>
+  </h2>
+  <p *ngFor="let item of info?.items; index as i">
+    {{ item
+    }}<editBtn
+      *ngIf="isLogged"
+      key="item"
+      value="{{ item }}"
+      [paragraph]="true"
+      (updatedValue)="onUpdatedValue($event)"
+      [position]="i"
+    ></editBtn>
   </p>
 </div>

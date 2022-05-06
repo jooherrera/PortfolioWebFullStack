@@ -42,12 +42,8 @@
 }
 
 button {
-  border-radius: 11px;
-  width: 74px;
-  height: 39px;
-  transition: all 0.5s ease;
+  display: none;
 }
-
 .notLogged {
   background-color: transparent;
   color: #00a124;
@@ -70,4 +66,14 @@ button {
   background-color: transparent;
 
   transition: all 0.5s ease;
+}
+
+@media (min-width: 576px) {
+  button {
+    border-radius: 11px;
+    width: 74px;
+    height: 39px;
+    transition: all 0.5s ease;
+    display: inline;
+  }
 }

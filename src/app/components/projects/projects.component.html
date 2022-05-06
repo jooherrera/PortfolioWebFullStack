@@ -1,12 +1,48 @@
 <div class="container Recuadro">
-  <h2 class="Title">{{ info?.title }} <editBtn *ngIf="isLogged"></editBtn></h2>
+  <h2 class="Title">
+    {{ info?.title }}
+    <editBtn
+      *ngIf="isLogged"
+      key="title"
+      value="{{ info?.title }}"
+      (updatedValue)="onUpdatedValue($event)"
+    ></editBtn>
+  </h2>
 
   <div class="Project_Item" *ngFor="let item of info?.items">
-    <h2>{{ item.name }} <editBtn *ngIf="isLogged"></editBtn></h2>
-    <h3>{{ item.description }} <editBtn *ngIf="isLogged"></editBtn></h3>
-    <h4 (click)="redirect(item.webLink)">
-      {{ item.webLink }} <editBtn *ngIf="isLogged"></editBtn>
-    </h4>
+    <h2>
+      {{ item.name }}
+      <editBtn
+        *ngIf="isLogged"
+        key="name"
+        value="{{ item.name }}"
+        (updatedValue)="onUpdatedValue($event)"
+        [id]="item.id"
+      ></editBtn>
+    </h2>
+    <h3>
+      {{ item.description }}
+      <editBtn
+        *ngIf="isLogged"
+        key="description"
+        value="{{ item.description }}"
+        (updatedValue)="onUpdatedValue($event)"
+        [id]="item.id"
+      ></editBtn>
+    </h3>
+
+    <div class="d-flex">
+      <h4 (click)="redirect(item.webLink)">
+        {{ item.webLink }}
+      </h4>
+      <editBtn
+        *ngIf="isLogged"
+        key="webLink"
+        value="{{ item.webLink }}"
+        (updatedValue)="onUpdatedValue($event)"
+        [id]="item.id"
+      ></editBtn>
+    </div>
 
     <div class="Project_Item__Box">
       <div class="Project_Item__GithubBox" *ngIf="item.githubLink">
@@ -17,9 +53,17 @@
           height="auto"
         />
       </div>
+
       <h5 (click)="redirect(item.githubLink)">
-        {{ item.githubLink }} <editBtn *ngIf="isLogged"></editBtn>
+        {{ item.githubLink }}
       </h5>
+      <editBtn
+        *ngIf="isLogged"
+        key="githubLink"
+        value="{{ item.githubLink }}"
+        (updatedValue)="onUpdatedValue($event)"
+        [id]="item.id"
+      ></editBtn>
     </div>
   </div>
 </div>

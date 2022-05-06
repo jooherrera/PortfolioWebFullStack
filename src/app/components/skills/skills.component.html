@@ -1,7 +1,16 @@
 <div class="container Recuadro">
-  <h2 class="Title">{{ info?.title }} <editBtn *ngIf="isLogged"></editBtn></h2>
+  <h2 class="Title">
+    {{ info?.title }}
+    <editBtn
+      *ngIf="isLogged"
+      key="title"
+      value="{{ info?.title }}"
+      (updatedValue)="onUpdatedValue($event)"
+    ></editBtn>
+  </h2>
+
   <div class="SKillContainer">
-    <div class="Skill_Item" *ngFor="let item of info?.items">
+    <div class="Skill_Item" *ngFor="let item of info?.items; index as i">
       <div class="Skill_Item__ImageContainer">
         <img
           [src]="item.logoUrl"
@@ -11,9 +20,14 @@
           [class]="isLogged ? 'canClick' : ''"
         />
       </div>
-      <h2 class="Skill_Item__Title">
-        {{ item.name }} <editBtn *ngIf="isLogged"></editBtn>
-      </h2>
+      {{ item.name }}
+      <editBtn
+        *ngIf="isLogged"
+        [key]="item.name"
+        [value]="item.name"
+        (updatedValue)="onUpdatedValue($event)"
+        [position]="i"
+      ></editBtn>
     </div>
   </div>
 </div>

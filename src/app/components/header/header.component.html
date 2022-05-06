@@ -1,21 +1,118 @@
 <header class="container">
-  <div class="Banner  {{ isLogged ? 'canClick' : '' }} "></div>
+  <div class="Banner  {{ isLogged ? 'canClick' : '' }} ">
+    <img
+      src="{{ imgBanner }}"
+      alt="Foto de perfil"
+      width="auto"
+      height="auto"
+      class="imgBanner"
+    />
+    <editBtn
+      *ngIf="isLogged"
+      key="imgBanner"
+      value="{{ imgBanner }}"
+      [fileUpload]="true"
+      (updatedValue)="onUpdatedValue($event)"
+    ></editBtn>
+  </div>
 
   <div class="Profile  {{ isLogged ? 'canClick' : '' }}">
+    <!-- src="/assets/FotoDePerfil.png"  -->
     <img
-      src="/assets/FotoDePerfil.png"
+      src="{{ imgProfile }}"
       alt="Foto de perfil"
       width="auto"
       height="auto"
     />
+    <editBtn
+      *ngIf="isLogged"
+      key="imgProfile"
+      value="{{ imgProfile }}"
+      [fileUpload]="true"
+      (updatedValue)="onUpdatedValue($event)"
+    ></editBtn>
   </div>
 
   <div class="ProfileInfo">
-    <h2 class="">{{ name }} <editBtn *ngIf="isLogged"></editBtn></h2>
-    <h3>{{ title }} <editBtn *ngIf="isLogged"></editBtn></h3>
-    <h3>{{ from }} <editBtn *ngIf="isLogged"></editBtn></h3>
-    <h3 class="Link">
-      Información de contacto <editBtn *ngIf="isLogged"></editBtn>
-    </h3>
+    <div class="d-flex align-items-center">
+      <h2>
+        {{ name }}
+        <editBtn
+          *ngIf="isLogged"
+          key="name"
+          value="{{ name }}"
+          (updatedValue)="onUpdatedValue($event)"
+        ></editBtn>
+      </h2>
+    </div>
+    <div class="d-flex">
+      <h3>
+        {{ title }}
+        <editBtn
+          *ngIf="isLogged"
+          key="title"
+          value="{{ title }}"
+          (updatedValue)="onUpdatedValue($event)"
+        ></editBtn>
+      </h3>
+    </div>
+    <div class="d-flex">
+      <h3>
+        {{ from }}
+        <editBtn
+          *ngIf="isLogged"
+          key="from"
+          value="{{ from }}"
+          (updatedValue)="onUpdatedValue($event)"
+        ></editBtn>
+      </h3>
+    </div>
+    <div>
+      <!-- <h3 class="Link collapsible">Información de contacto</h3> -->
+      <h3
+        class="Link d-inline"
+        data-bs-toggle="collapse"
+        href="#collapseExample"
+        role="button"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Información de contacto
+      </h3>
+      <div class="collapse" id="collapseExample">
+        <div class="collapse2">
+          <h3>
+            Telefono: {{ info?.phone }}
+            <editBtn
+              *ngIf="isLogged"
+              key="phone"
+              value="{{ info?.phone }}"
+              (updatedValue)="onUpdatedValue($event)"
+            ></editBtn>
+          </h3>
+          <h3>
+            E-Mail: {{ info?.mail }}
+            <editBtn
+              *ngIf="isLogged"
+              key="mail"
+              value="{{ info?.mail }}"
+              (updatedValue)="onUpdatedValue($event)"
+            ></editBtn>
+          </h3>
+          <h3>
+            Linkedin:
+            <span class="Link" (click)="goTo(info?.linkedin!)">{{
+              info?.linkedin
+            }}</span>
+            <editBtn
+              *ngIf="isLogged"
+              key="linkedin"
+              value="{{ info?.linkedin }}"
+              (updatedValue)="onUpdatedValue($event)"
+            ></editBtn>
+          </h3>
+        </div>
+      </div>
+    </div>
   </div>
 </header>

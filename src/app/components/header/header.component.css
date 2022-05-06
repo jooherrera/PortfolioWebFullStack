@@ -1,17 +1,24 @@
 header {
   width: auto;
-  height: 400px;
+  /* height: 400px; */
+  height: max-content;
   /* background-color: red; */
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 0;
   position: relative;
 }
 
 .Banner {
   height: 150px;
-  background-image: url("/assets/banner.webp");
-  background-position: right center;
-  background-size: cover;
+  /* background-image: url("/assets/banner.webp"); */
+  /* background-position: right center;
+  background-size: cover; */
+}
+
+.Banner .imgBanner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .Profile {
@@ -53,37 +60,31 @@ header {
 .Link {
   color: dodgerblue;
   cursor: pointer;
+  transition: 0.7s ease-in-out;
+  /* margin: 0px 10px !important; */
+  /* margin-bottom: 20px; */
 }
 
-input {
-  /* width: fit-content; */
-
-  /* width: 20px; */
-  max-width: 400px;
+.collapse2 {
+  transition: 0.7s ease-in-out;
+  animation-name: animar;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
 }
 
-input:focus {
-  /* min-width: 100%; */
-}
-.customInput {
-  border: none;
-}
-
-.customInputDisable {
-  pointer-events: none;
-}
-
-.h2 {
-  font-family: "Montserrat500";
-  font-weight: bold;
-  font-size: 3rem;
-  color: #363636;
+@keyframes animar {
+  0% {
+    margin-left: -500px;
+  }
+  100% {
+    margin-left: 0;
+  }
 }
 
 /* ------------------------------ MEDIA QUERIES ----------------------------- */
 @media (min-width: 576px) {
   header {
-    height: 600px;
+    height: max-content;
     border-radius: 30px;
     margin-top: 15px;
     overflow: hidden;
@@ -99,9 +100,10 @@ input:focus {
   .Profile {
     width: 200px;
     height: 200px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+    top: 200px;
+
+    /* bottom: 0; */
+    /* margin: auto;  */
     margin-left: 35px;
   }
 

@@ -15,8 +15,9 @@ import { SoftComponent } from './components/soft/soft.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './components/modalLogin/modal.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
+import { EditableComponent } from './components/editable/editable.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
     ProjectsComponent,
     ModalComponent,
     EditBtnComponent,
+    EditableComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
     NgbModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

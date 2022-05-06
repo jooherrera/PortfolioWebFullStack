@@ -3,10 +3,20 @@ export type Credenciales = {
   password: string;
 };
 
+export type UpdateKey = {
+  [key: string]: string | number | undefined;
+  key: string;
+  value: string;
+  position: number | undefined;
+  id: number | undefined;
+};
+
 export type Profile = {
   name: string;
   title: string;
   from: string;
+  imgProfile: string;
+  imgBanner: string;
   contactInfo: ContactInfo;
   about: About;
   experience: ExpEducation;
@@ -21,7 +31,9 @@ export type Project = {
   title: string;
   items: ProjectItem[];
 };
-type ProjectItem = {
+export type ProjectItem = {
+  [key: string]: string | number;
+  id: number;
   name: string;
   description: string;
   webLink: string;
@@ -31,15 +43,17 @@ export type SoftSkill = {
   title: string;
   items: SoftSkillItem[];
 };
-type SoftSkillItem = {
+export type SoftSkillItem = {
+  [key: string]: string;
   name: string;
-  porcent: number;
+  porcent: string;
 };
 export type HardSkill = {
   title: string;
   items: HardSkillItem[];
 };
-type HardSkillItem = {
+export type HardSkillItem = {
+  [key: string]: string;
   name: string;
   logoUrl: string;
 };
@@ -60,15 +74,17 @@ export type ExpEducation = {
   title: string;
   items: ExpEducationItem[];
 };
-type ExpEducationItem = {
+export type ExpEducationItem = {
+  [key: string]: string | number | undefined;
+  id: number;
   logoUrl: string;
   name: string;
-  company?: string;
-  title?: string;
+  company: string;
+  title: string;
   date: string;
   extra: string;
 };
-type ContactInfo = {
+export type ContactInfo = {
   phone: string;
   mail: string;
   linkedin: string;

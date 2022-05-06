@@ -3,4 +3,57 @@
   alt="boton de editar"
   width="auto"
   height="auto"
+  (click)="onOpenEdit()"
+  *ngIf="!fileUpload"
 />
+<div class="fileUpload" *ngIf="fileUpload" (click)="onOpenEdit()"></div>
+
+<div class="modalDialog {{ isEditable && 'show ' }} ">
+  <div>
+    <h2 class="TitleModal">Editor</h2>
+    <!-- <form (ngSubmit)="onSubmit()"> -->
+    <div class="mb-3 inputContainer">
+      <!-- <label for="keyValue" class="form-label">Key</label> -->
+
+      <input
+        *ngIf="!paragraph && !fileUpload"
+        type="text"
+        class="form-control"
+        #keyValue
+        [(ngModel)]="value"
+        (keydown.enter)="onSubmit()"
+        (keydown.esc)="onCloseEdit()"
+      />
+      <textarea
+        cols="30"
+        rows="10"
+        *ngIf="paragraph && !fileUpload"
+        [(ngModel)]="value"
+        #keyValue
+      ></textarea>
+
+      <input
+        *ngIf="fileUpload"
+        #file
+        type="file"
+        class="form-control"
+        (change)="onFileChange($event)"
+      />
+    </div>
+    <div class="d-flex justify-content-around w-100">
+      <input
+        type="button"
+        (click)="onSubmit()"
+        value="Submit"
+        class="btn btn-primary"
+      />
+      <input
+        type="button"
+        value="Cerrar"
+        class="btn btn-danger"
+        (click)="onCloseEdit()"
+      />
+    </div>
+    <!-- </form> -->
+  </div>
+</div>

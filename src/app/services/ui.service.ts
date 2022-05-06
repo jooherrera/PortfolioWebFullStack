@@ -5,19 +5,20 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class UiService {
-  private isOpenloginModal: boolean = false;
+  private isOpenLoginModal: boolean = false;
   private loginModalState = new Subject<any>();
   private isLogged: boolean = false;
   private logState = new Subject<any>();
+
   constructor() {}
 
   closeLoginModal(): void {
-    this.isOpenloginModal = false;
-    this.loginModalState.next(this.isOpenloginModal);
+    this.isOpenLoginModal = false;
+    this.loginModalState.next(this.isOpenLoginModal);
   }
   openLoginModal(): void {
-    this.isOpenloginModal = true;
-    this.loginModalState.next(this.isOpenloginModal);
+    this.isOpenLoginModal = true;
+    this.loginModalState.next(this.isOpenLoginModal);
   }
 
   LoginModalState(): Observable<any> {

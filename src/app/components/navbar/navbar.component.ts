@@ -37,7 +37,10 @@ export class NavbarComponent implements OnInit {
       .subscribe((v) => (this.isLogged = v));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //Borrar esto
+    this.uiService.logIn();
+  }
 
   goTo(Title: string) {
     window.open(this.links[Title], '_blank');

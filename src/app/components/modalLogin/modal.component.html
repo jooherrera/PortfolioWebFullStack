@@ -1,6 +1,6 @@
-<div id="openModal" [class]="isModalOpen ? 'show ' : 'modalDialog'">
+<div class="modalDialog {{ isModalOpen && 'show ' }}">
   <div>
-    <h2 class="Title">LOGIN</h2>
+    <h2 class="TitleModal">LOGIN</h2>
     <form (ngSubmit)="onSubmit()">
       <div class="mb-3 inputContainer">
         <label for="user" class="form-label">Usuario</label>
