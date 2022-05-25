@@ -1,6 +1,12 @@
 export type Credenciales = {
-  user: string;
+  email: string;
   password: string;
+};
+
+export type LoginResponse = {
+  success: boolean;
+  message: string;
+  token: string;
 };
 
 export type UpdateKey = {

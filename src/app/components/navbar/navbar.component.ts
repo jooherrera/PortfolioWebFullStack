@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     //Borrar esto
-    this.uiService.logIn();
+    // this.uiService.logIn();
   }
 
   goTo(Title: string) {

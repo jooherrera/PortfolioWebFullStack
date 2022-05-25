@@ -12,7 +12,7 @@ export class ModalComponent implements OnInit {
   @Output() onLogin: EventEmitter<Credenciales> = new EventEmitter();
   @Input() isModalOpen = false;
 
-  user: string = '';
+  email: string = '';
   password: string = '';
 
   constructor(private uiService: UiService) {}
@@ -24,16 +24,16 @@ export class ModalComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.user || !this.password) {
+    const { email, password } = this;
+
+    if (!email || !password) {
       alert('Campos incopletos');
       return;
     }
 
-    const { user, password } = this;
-
-    const credenciales: Credenciales = { user, password };
+    const credenciales: Credenciales = { email, password };
     this.onLogin.emit(credenciales);
-    this.user = '';
+    this.email = '';
     this.password = '';
   }
 }
