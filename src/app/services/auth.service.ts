@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Credenciales, LoginResponse, Profile } from 'src/types';
+import { UiService } from './ui.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class AuthService {
   url2 = 'http://192.168.1.108:8080';
   private jwt = '';
   private jwtState = new Subject<any>();
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private uiService: UiService) {}
 
   getProfile(): Observable<Profile> {
     return this.http.get<Profile>(`${this.url}/profile`);
@@ -28,9 +29,9 @@ export class AuthService {
         if (resp.success) {
           this.jwt = resp.token;
           this.jwtState.next(this.jwt);
-          return true;
+          this.uiService.closeLoginModal();
+          this.uiService.logIn();
         }
-        return false;
       });
 
     //this.jwt = 'Bearer jksadjasjlkasdjlkasdjlkdasjlkadsjlkadsjlkljksdaljk';

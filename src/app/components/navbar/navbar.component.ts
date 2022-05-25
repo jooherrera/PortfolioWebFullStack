@@ -53,10 +53,11 @@ export class NavbarComponent implements OnInit {
 
   login(credenciales: Credenciales) {
     try {
-      const resp = this.authService.login(credenciales);
-      if (!resp) throw new Error(`Usuario o contraseña incorrecto.`);
-      this.uiService.closeLoginModal();
-      this.uiService.logIn();
+      this.authService.login(credenciales);
+      // const resp = this.authService.login(credenciales);
+      //if (!resp) throw new Error(`Usuario o contraseña incorrecto.`);
+      //this.uiService.closeLoginModal();
+      // this.uiService.logIn();
     } catch (error) {
       console.log('NAVBAR-COMPONENT ERROR');
     }
