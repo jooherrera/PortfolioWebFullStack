@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { UiService } from 'src/app/services/ui.service';
 import { Credenciales } from 'src/types';
 
@@ -9,13 +10,18 @@ import { Credenciales } from 'src/types';
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnInit {
-  @Output() onLogin: EventEmitter<Credenciales> = new EventEmitter();
   @Input() isModalOpen = false;
 
   email: string = '';
   password: string = '';
 
-  constructor(private uiService: UiService) {}
+  isLoginError = false;
+
+  constructor(private uiService: UiService, private authService: AuthService) {
+    this.authService
+      .LoginErrorState()
+      .subscribe((v) => (this.isLoginError = v));
+  }
 
   ngOnInit(): void {}
 
@@ -32,7 +38,8 @@ export class ModalComponent implements OnInit {
     }
 
     const credenciales: Credenciales = { email, password };
-    this.onLogin.emit(credenciales);
+    this.authService.login(credenciales);
+    // this.onLogin.emit(credenciales);
     this.email = '';
     this.password = '';
   }

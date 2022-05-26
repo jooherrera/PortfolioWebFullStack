@@ -8,7 +8,13 @@ import { About, ExpEducation, ProfileInfo } from 'src/types';
 })
 export class ProfileService {
   url = 'http://192.168.1.108:5001';
+  url2 = 'http://192.168.1.108:8080';
+  apiV1 = '/api/v1';
   constructor(private http: HttpClient) {}
+
+  getAboutSection(): Observable<About> {
+    return this.http.get<About>(`${this.url2}/`);
+  }
 
   updateAbout(info: Partial<About>, jwt: string): Observable<About> {
     console.log(info);

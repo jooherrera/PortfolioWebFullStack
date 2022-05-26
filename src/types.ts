@@ -104,6 +104,7 @@ export type ExpEducationItem = {
 };
 
 export type About = {
+  id: number;
   title: string;
   items: string[];
 };

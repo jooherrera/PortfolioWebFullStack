@@ -22,6 +22,7 @@
           [(ngModel)]="password"
         />
       </div>
+
       <div class="d-flex justify-content-around w-100">
         <input type="submit" value="Submit" class="btn btn-primary" />
         <input
@@ -30,6 +31,9 @@
           class="btn btn-danger"
           (click)="closeLoginModal()"
         />
+      </div>
+      <div *ngIf="isLoginError" class="alert alert-danger mt-5" role="alert">
+        Email o contraseña incorrecto.
       </div>
     </form>
   </div>
