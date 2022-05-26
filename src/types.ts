@@ -19,7 +19,7 @@ export type UpdateKey = {
 
 export type Profile = {
   profileInfo: ProfileInfo;
-  about: About;
+  // about: About;
   experience: ExpEducation;
   education: ExpEducation;
   curso: Curso;
@@ -103,8 +103,39 @@ export type ExpEducationItem = {
   extra: string;
 };
 
-export type About = {
+// export type About = {
+//   id: number;
+//   title: string;
+//   items: string[];
+// };
+
+/* -------------------------------------------------------------------------- */
+/*                      --------------------------------                      */
+/* -------------------------------------------------------------------------- */
+export type Section = {
   id: number;
+  sectionTitle: string;
+  visible: boolean;
+};
+
+export type AboutContent = {
+  id: number;
+  paragraph: string;
+};
+
+export type PersonInfo = {
+  [key: string]: string | number;
+  dni: number;
+  fullName: string;
   title: string;
-  items: string[];
+  profileImg: string;
+  bannerImg: string;
+};
+
+export type ContactContent = {
+  id: number;
+  email: string;
+  phone: string;
+  linkedin: string;
+  address: string;
 };

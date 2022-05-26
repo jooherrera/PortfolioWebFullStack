@@ -1,69 +1,70 @@
 <header class="container">
   <div class="Banner  {{ isLogged ? 'canClick' : '' }} ">
     <img
-      src="{{ info?.imgBanner }}"
-      alt="Foto de perfil"
+      [src]="personContent?.bannerImg"
+      alt="Banner de perfil"
       width="auto"
       height="auto"
       class="imgBanner"
     />
     <editBtn
       *ngIf="isLogged"
-      key="imgBanner"
-      value="{{ info?.imgBanner }}"
+      key="bannerImg"
+      value="{{ personContent?.bannerImg }}"
       [fileUpload]="true"
-      (updatedValue)="onUpdatedValue($event)"
+      (updatedValue)="onUpdatedPerson($event)"
     ></editBtn>
   </div>
 
   <div class="Profile  {{ isLogged ? 'canClick' : '' }}">
     <!-- src="/assets/FotoDePerfil.png"  -->
     <img
-      src="{{ info?.imgProfile }}"
+      [src]="personContent?.profileImg"
       alt="Foto de perfil"
       width="auto"
       height="auto"
     />
     <editBtn
       *ngIf="isLogged"
-      key="imgProfile"
-      value="{{ info?.imgProfile }}"
+      key="profileImg"
+      value="{{ personContent?.profileImg }}"
       [fileUpload]="true"
-      (updatedValue)="onUpdatedValue($event)"
+      (updatedValue)="onUpdatedPerson($event)"
     ></editBtn>
   </div>
 
   <div class="ProfileInfo">
     <div class="d-flex align-items-center">
       <h2>
-        {{ info?.name }}
+        {{ personContent?.fullName }}
         <editBtn
           *ngIf="isLogged"
-          key="name"
-          value="{{ info?.name }}"
-          (updatedValue)="onUpdatedValue($event)"
+          key="fullName"
+          value="{{ personContent?.fullName }}"
+          (updatedValue)="onUpdatedPerson($event)"
         ></editBtn>
       </h2>
     </div>
     <div class="d-flex">
       <h3>
-        {{ info?.title }}
+        {{ personContent?.title }}
         <editBtn
           *ngIf="isLogged"
           key="title"
-          value="{{ info?.title }}"
-          (updatedValue)="onUpdatedValue($event)"
+          value="{{ personContent?.title }}"
+          (updatedValue)="onUpdatedPerson($event)"
         ></editBtn>
       </h3>
     </div>
     <div class="d-flex">
       <h3>
-        {{ info?.from }}
+        {{ contactContent?.address }}
         <editBtn
           *ngIf="isLogged"
-          key="from"
-          value="{{ info?.from }}"
-          (updatedValue)="onUpdatedValue($event)"
+          key="address"
+          value="{{ contactContent?.address }}"
+          (updatedValue)="onUpdatedContact($event)"
+          [id]="contactContent?.id"
         ></editBtn>
       </h3>
     </div>
@@ -82,33 +83,36 @@
       <div class="collapse" id="collapseExample">
         <div class="collapse2">
           <h3>
-            Telefono: {{ info?.phone }}
+            Telefono: {{ contactContent?.phone }}
             <editBtn
               *ngIf="isLogged"
               key="phone"
-              value="{{ info?.phone }}"
-              (updatedValue)="onUpdatedValue($event)"
+              value="{{ contactContent?.phone }}"
+              (updatedValue)="onUpdatedContact($event)"
+              [id]="contactContent?.id"
             ></editBtn>
           </h3>
           <h3>
-            E-Mail: {{ info?.mail }}
+            E-Mail: {{ contactContent?.email }}
             <editBtn
               *ngIf="isLogged"
-              key="mail"
-              value="{{ info?.mail }}"
-              (updatedValue)="onUpdatedValue($event)"
+              key="email"
+              value="{{ contactContent?.email }}"
+              (updatedValue)="onUpdatedContact($event)"
+              [id]="contactContent?.id"
             ></editBtn>
           </h3>
           <h3>
             Linkedin:
-            <span class="Link" (click)="goTo(info?.linkedin!)">{{
-              info?.linkedin
+            <span class="Link" (click)="goTo(contactContent?.linkedin!)">{{
+              contactContent?.linkedin
             }}</span>
             <editBtn
               *ngIf="isLogged"
               key="linkedin"
-              value="{{ info?.linkedin }}"
-              (updatedValue)="onUpdatedValue($event)"
+              value="{{ contactContent?.linkedin }}"
+              (updatedValue)="onUpdatedContact($event)"
+              [id]="contactContent?.id"
             ></editBtn>
           </h3>
         </div>

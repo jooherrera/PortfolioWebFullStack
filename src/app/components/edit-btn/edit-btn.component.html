@@ -25,9 +25,9 @@
         (keydown.esc)="onCloseEdit()"
       />
       <textarea
+        *ngIf="paragraph && !fileUpload"
         cols="30"
         rows="10"
-        *ngIf="paragraph && !fileUpload"
         [(ngModel)]="value"
         #keyValue
       ></textarea>

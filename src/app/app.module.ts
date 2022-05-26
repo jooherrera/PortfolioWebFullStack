@@ -20,6 +20,7 @@ import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
 import { EditableComponent } from './components/editable/editable.component';
 import { CursoComponent } from './components/curso/curso.component';
 import { ButtonComponent } from './components/button/button.component';
+import { VisibleBtnComponent } from './components/visible-btn/visible-btn.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ButtonComponent } from './components/button/button.component';
     EditableComponent,
     CursoComponent,
     ButtonComponent,
+    VisibleBtnComponent,
   ],
   imports: [
     BrowserModule,

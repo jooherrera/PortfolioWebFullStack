@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
-import { ProfileInfo, UpdateKey } from 'src/types';
+import { ContactContent, PersonInfo, ProfileInfo, UpdateKey } from 'src/types';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +11,12 @@ import { ProfileInfo, UpdateKey } from 'src/types';
 })
 export class HeaderComponent implements OnInit {
   @Input() info: Partial<ProfileInfo> = {};
-  isLogged: boolean = false;
 
-  jtwValue: string = 'HEADER COMPONENT _ JWT DE PRUEBA';
+  isLogged: boolean = false;
+  jtwValue: string = '';
+
+  personContent: Partial<PersonInfo> = {};
+  contactContent: Partial<ContactContent> = {};
 
   constructor(
     private uiService: UiService,
@@ -22,6 +25,12 @@ export class HeaderComponent implements OnInit {
   ) {
     this.uiService.LogState().subscribe((v) => (this.isLogged = v));
     this.authService.JwtState().subscribe((v) => (this.jtwValue = v));
+    this.profileService.getPersonInfo().subscribe((v) => {
+      this.personContent = v;
+    });
+    this.profileService.getContactInfo().subscribe((v) => {
+      this.contactContent = v;
+    });
   }
 
   ngOnInit(): void {}
@@ -30,14 +39,17 @@ export class HeaderComponent implements OnInit {
     window.open(`http://${url}`, '_blank');
   }
 
-  onUpdatedValue(newValue: UpdateKey) {
-    this.info = {
-      ...this.info,
-      [`${newValue.key}`]: newValue.value,
-    };
-
+  onUpdatedPerson(newValue: UpdateKey) {
+    let body = { [newValue.key]: newValue.value };
     this.profileService
-      .updateProfile({ [`${newValue.key}`]: newValue.value }, this.jtwValue)
-      .subscribe((v) => console.log('Actualizado'));
+      .updatePersonInfo(body, this.jtwValue)
+      .subscribe((v) => (this.personContent = v));
+  }
+
+  onUpdatedContact(newValue: UpdateKey) {
+    let body = { [newValue.key]: newValue.value };
+    this.profileService
+      .updateContactInfo(body, this.jtwValue, newValue.id!)
+      .subscribe((v) => (this.contactContent = v));
   }
 }

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
-import { About, UpdateKey } from 'src/types';
+import { AboutContent, Section, UpdateKey } from 'src/types';
 
 @Component({
   selector: 'app-about',
@@ -10,10 +10,11 @@ import { About, UpdateKey } from 'src/types';
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent implements OnInit {
-  @Input() info: Partial<About> = {};
-  items: string[] = [];
   isLogged: boolean = false;
-  jtwValue: string = 'ABOUT COMPONENT _ JWT DE PRUEBA';
+  jtwValue: string = '';
+
+  section: Partial<Section> = {};
+  aboutContent: Partial<AboutContent> = {};
 
   constructor(
     private uiService: UiService,
@@ -22,31 +23,42 @@ export class AboutComponent implements OnInit {
   ) {
     this.uiService.LogState().subscribe((v) => (this.isLogged = v));
     this.authService.JwtState().subscribe((v) => (this.jtwValue = v));
+    this.profileService.getSection('about').subscribe((v) => {
+      this.section = v;
+    });
+    this.profileService.getInfo('about').subscribe((v) => {
+      this.aboutContent = v;
+    });
   }
 
   ngOnInit(): void {}
 
-  ngOnChanges() {
-    this.items = this.info?.items || [];
+  // onToogleVisibility() {
+  //   console.log(value);
+  //   let body = { }
+  //   this.profileService
+  //   .updateSectionTitle(body, this.jtwValue, 'about')
+  //   .subscribe((v) => {
+  //     this.section = v;
+  //   });
+  // }
+
+  onUpdatedTitleValue(newValue: UpdateKey) {
+    console.log(newValue);
+
+    let body = { [newValue.key]: newValue.value };
+
+    this.profileService
+      .updateSectionTitle(body, this.jtwValue, 'about')
+      .subscribe((v) => {
+        this.section = v;
+      });
   }
 
   onUpdatedValue(newValue: UpdateKey) {
-    if (newValue.position !== undefined) {
-      console.log('estoy aca');
-      this.items[newValue.position] = newValue.value;
-      this.info = {
-        ...this.info,
-        items: this.items,
-      };
-    } else {
-      this.info = {
-        ...this.info,
-        [newValue.key]: newValue.value,
-      };
-    }
-
+    let body = { [newValue.key]: newValue.value };
     this.profileService
-      .updateAbout(this.info, this.jtwValue)
-      .subscribe((resp) => console.log(resp));
+      .updateInfo(body, this.jtwValue, 'about', newValue.id!)
+      .subscribe((v) => (this.aboutContent = v));
   }
 }

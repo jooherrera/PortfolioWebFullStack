@@ -1,17 +1,40 @@
-<div class="container Recuadro">
+<div
+  class="container Recuadro"
+  *ngIf="(section?.visible && !isLogged) || isLogged"
+>
   <!-- <editable data="{{ info?.title }}" heading="Title"></editable> -->
   <h2>
-    {{ info?.title }}
+    {{ section?.sectionTitle }}
     <editBtn
       *ngIf="isLogged"
-      key="title"
-      value="{{ info?.title }}"
+      key="sectionTitle"
+      value="{{ section?.sectionTitle }}"
+      (updatedValue)="onUpdatedTitleValue($event)"
+    ></editBtn>
+
+    <visible-btn
+      *ngIf="isLogged"
+      [isVisible]="section?.visible"
+      key="visible"
+      (toggleVisibility)="onUpdatedTitleValue($event)"
+      [id]="section?.id"
+    >
+    </visible-btn>
+  </h2>
+  <p>
+    {{ aboutContent?.paragraph }}
+    <editBtn
+      *ngIf="isLogged"
+      key="paragraph"
+      value="{{ aboutContent?.paragraph }}"
+      [paragraph]="true"
+      [id]="aboutContent?.id"
       (updatedValue)="onUpdatedValue($event)"
     ></editBtn>
-  </h2>
-  <p *ngFor="let item of info?.items; index as i">
-    {{ item
-    }}<editBtn
+  </p>
+  <!-- <p *ngFor="let item of info?.items; index as i">
+    {{ item }}
+    <editBtn
       *ngIf="isLogged"
       key="item"
       value="{{ item }}"
@@ -19,5 +42,5 @@
       (updatedValue)="onUpdatedValue($event)"
       [position]="i"
     ></editBtn>
-  </p>
+  </p> -->
 </div>

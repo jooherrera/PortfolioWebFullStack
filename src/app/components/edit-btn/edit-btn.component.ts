@@ -66,7 +66,6 @@ export class EditBtnComponent implements OnInit {
         alert('No hay imagen.');
         return;
       }
-      console.log(this.value);
     }
 
     const body: UpdateKey = {
