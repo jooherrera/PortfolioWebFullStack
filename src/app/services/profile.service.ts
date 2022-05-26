@@ -5,6 +5,7 @@ import {
   AboutContent,
   ContactContent,
   ExpEducation,
+  ExperienceContent,
   PersonInfo,
   Profile,
   ProfileInfo,
@@ -99,8 +100,42 @@ export class ProfileService {
   }
 
   /* -------------------------------------------------------------------------- */
-  /*                                  END ABOUT                                 */
+  /*                                 EXPERIENCE                                 */
   /* -------------------------------------------------------------------------- */
+
+  getExperienceInfo(): Observable<ExperienceContent[]> {
+    return this.http.get<ExperienceContent[]>(
+      `${this.url}${this.apiV1}/experience/job/`
+    );
+  }
+
+  addExpItem(jwt: string): Observable<ExperienceContent> {
+    return this.http.post<ExperienceContent>(
+      `${this.url}${this.apiV1}/experience/job/`,
+      {
+        headers: { Authorization: jwt },
+      }
+    );
+  }
+
+  updateExpItem(
+    info: Partial<ExperienceContent>,
+    jwt: string,
+    id: number
+  ): Observable<ExperienceContent> {
+    return this.http.patch<ExperienceContent>(
+      `${this.url}${this.apiV1}/experience/job/${id}`,
+      info,
+      { headers: { Authorization: jwt } }
+    );
+  }
+
+  deleteExpItem(jwt: string, id: number): Observable<any> {
+    return this.http.delete<any>(
+      `${this.url}${this.apiV1}/experience/job/${id}`,
+      { headers: { Authorization: jwt } }
+    );
+  }
 
   // updateAbout(info: Partial<About>, jwt: string): Observable<About> {
   //   console.log(info);
@@ -123,9 +158,5 @@ export class ProfileService {
   ): Observable<ExpEducation> {
     console.log(info);
     return this.http.patch<ExpEducation>(`${this.url}/experience`, info);
-  }
-
-  addExpItem(jwt: string) {
-    console.log(jwt);
   }
 }

@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
-import { AboutContent, Section, UpdateKey } from 'src/types';
+import { AboutContent, Section, SectionNames, UpdateKey } from 'src/types';
+import { ExperienceComponent } from '../experience/experience.component';
 
 @Component({
   selector: 'app-about',
@@ -11,7 +12,7 @@ import { AboutContent, Section, UpdateKey } from 'src/types';
 })
 export class AboutComponent implements OnInit {
   isLogged: boolean = false;
-  jtwValue: string = '';
+  jwtValue: string = '';
 
   section: Partial<Section> = {};
   aboutContent: Partial<AboutContent> = {};
@@ -22,8 +23,8 @@ export class AboutComponent implements OnInit {
     private profileService: ProfileService
   ) {
     this.uiService.LogState().subscribe((v) => (this.isLogged = v));
-    this.authService.JwtState().subscribe((v) => (this.jtwValue = v));
-    this.profileService.getSection('about').subscribe((v) => {
+    this.authService.JwtState().subscribe((v) => (this.jwtValue = v));
+    this.profileService.getSection(SectionNames.ABOUT).subscribe((v) => {
       this.section = v;
     });
     this.profileService.getInfo('about').subscribe((v) => {
@@ -33,23 +34,13 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // onToogleVisibility() {
-  //   console.log(value);
-  //   let body = { }
-  //   this.profileService
-  //   .updateSectionTitle(body, this.jtwValue, 'about')
-  //   .subscribe((v) => {
-  //     this.section = v;
-  //   });
-  // }
-
   onUpdatedTitleValue(newValue: UpdateKey) {
     console.log(newValue);
 
     let body = { [newValue.key]: newValue.value };
 
     this.profileService
-      .updateSectionTitle(body, this.jtwValue, 'about')
+      .updateSectionTitle(body, this.jwtValue, 'about')
       .subscribe((v) => {
         this.section = v;
       });
@@ -58,7 +49,7 @@ export class AboutComponent implements OnInit {
   onUpdatedValue(newValue: UpdateKey) {
     let body = { [newValue.key]: newValue.value };
     this.profileService
-      .updateInfo(body, this.jtwValue, 'about', newValue.id!)
+      .updateInfo(body, this.jwtValue, 'about', newValue.id!)
       .subscribe((v) => (this.aboutContent = v));
   }
 }

@@ -139,3 +139,22 @@ export type ContactContent = {
   linkedin: string;
   address: string;
 };
+
+export type ExperienceContent = {
+  [key: string]: string | number;
+  id: number;
+  logo: string;
+  name: string;
+  company: string;
+  date: string;
+};
+
+export enum SectionNames {
+  ABOUT = 'about',
+  EXPERIENCE = 'experience',
+  CURSO = 'curso',
+  EDUCATION = 'education',
+  HSKILL = 'hard-skill',
+  SSKILL = 'soft-skill',
+  PROJECT = 'project',
+}

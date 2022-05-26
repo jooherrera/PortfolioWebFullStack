@@ -1,19 +1,30 @@
-<div class="container Recuadro">
+<div
+  class="container Recuadro"
+  *ngIf="(section?.visible && !isLogged) || isLogged"
+>
   <h2 class="Title">
-    {{ info?.title }}
+    {{ section?.sectionTitle }}
     <editBtn
       *ngIf="isLogged"
-      key="title"
-      value="{{ info?.title }}"
-      (updatedValue)="onUpdatedValue($event)"
+      key="sectionTitle"
+      value="{{ section?.sectionTitle }}"
+      (updatedValue)="onUpdatedTitleValue($event)"
     ></editBtn>
     <addBtn *ngIf="isLogged" [addBtn]="true" (click)="onAddItem()"></addBtn>
+    <visible-btn
+      *ngIf="isLogged"
+      [isVisible]="section?.visible"
+      key="visible"
+      (toggleVisibility)="onUpdatedTitleValue($event)"
+      [id]="section?.id"
+    >
+    </visible-btn>
   </h2>
 
-  <div class="ExpContainer_item" *ngFor="let item of info?.items">
+  <div class="ExpContainer_item" *ngFor="let item of expContent">
     <div class="ExpContainer_item__imgContainer">
       <img
-        [src]="item.logoUrl"
+        [src]="item?.logo ? item?.logo : '/assets/empresa.png'"
         alt="Logo Empresa"
         width="auto"
         height="auto"
@@ -21,57 +32,57 @@
       />
       <editBtn
         *ngIf="isLogged"
-        key="logoUrl"
-        value="{{ item.logoUrl }}"
+        key="logo"
+        value="{{ item?.logo }}"
         [fileUpload]="true"
         (updatedValue)="onUpdatedValue($event)"
-        [id]="item.id"
+        [id]="item?.id"
       ></editBtn>
     </div>
     <div>
       <h2>
-        {{ item.name }}
+        {{ item?.name }}
         <editBtn
           *ngIf="isLogged"
           key="name"
-          value="{{ item.name }}"
+          value="{{ item?.['name'] }}"
           (updatedValue)="onUpdatedValue($event)"
-          [id]="item.id"
+          [id]="item?.id!"
         ></editBtn>
         <addBtn
           *ngIf="isLogged"
           [removeBtn]="true"
-          (click)="onRemoveItem(item.id)"
+          (click)="onRemoveItem(item?.id!)"
         ></addBtn>
       </h2>
       <h3>
-        {{ item.company || item.title }}
+        {{ item?.['company'] || item?.['title'] }}
         <editBtn
           *ngIf="isLogged"
-          [key]="item.company ? 'company' : 'title'"
-          [value]="item.company || item.title"
+          [key]="item?.['company'] ? 'company' : 'title'"
+          value="{{item?.['company'] || item?.['title']}}"
           (updatedValue)="onUpdatedValue($event)"
-          [id]="item.id"
+          [id]="item?.id"
         ></editBtn>
       </h3>
       <h4>
-        {{ item.date }}
+        {{ item?.['date'] }}
         <editBtn
           *ngIf="isLogged"
           key="date"
-          [value]="item.date"
+          value="{{item?.['date']}}"
           (updatedValue)="onUpdatedValue($event)"
-          [id]="item.id"
+          [id]="item?.id"
         ></editBtn>
       </h4>
       <h4>
-        {{ item.extra }}
+        {{ item?.['extra'] }}
         <editBtn
           *ngIf="isLogged"
           key="extra"
-          [value]="item.extra"
+          value="{{item?.['extra']}}"
           (updatedValue)="onUpdatedValue($event)"
-          [id]="item.id"
+          [id]="item?.id"
         ></editBtn>
       </h4>
     </div>
