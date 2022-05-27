@@ -21,6 +21,7 @@ import { EditableComponent } from './components/editable/editable.component';
 import { CursoComponent } from './components/curso/curso.component';
 import { ButtonComponent } from './components/button/button.component';
 import { VisibleBtnComponent } from './components/visible-btn/visible-btn.component';
+import { EducationComponent } from './components/education/education.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { VisibleBtnComponent } from './components/visible-btn/visible-btn.compon
     CursoComponent,
     ButtonComponent,
     VisibleBtnComponent,
+    EducationComponent,
   ],
   imports: [
     BrowserModule,

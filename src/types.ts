@@ -140,12 +140,21 @@ export type ContactContent = {
   address: string;
 };
 
-export type ExperienceContent = {
+export type ExpContent = {
   [key: string]: string | number;
   id: number;
   logo: string;
   name: string;
   company: string;
+  date: string;
+};
+
+export type EducationContent = {
+  [key: string]: string | number;
+  id: number;
+  logo: string;
+  name: string;
+  title: string;
   date: string;
 };
 

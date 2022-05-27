@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Profile } from 'src/types';
-import { AuthService } from './services/auth.service';
+
+import { ProfileService } from './services/profile.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +9,6 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'Front-End-Angular';
-  profileInfo: Partial<Profile> = {};
-  constructor(private profile: AuthService) {
-    this.profile.getProfile().subscribe((resp) => {
-      this.profileInfo = resp;
-    });
-  }
+
+  constructor() {}
 }

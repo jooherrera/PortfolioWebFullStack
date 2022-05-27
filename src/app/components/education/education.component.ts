@@ -1,28 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
-import {
-  ExpContent,
-  ExpEducation,
-  Section,
-  SectionNames,
-  UpdateKey,
-} from 'src/types';
+import { EducationContent, Section, SectionNames, UpdateKey } from 'src/types';
 
 @Component({
-  selector: 'app-experience',
-  templateUrl: './experience.component.html',
-  styleUrls: ['./experience.component.css'],
+  selector: 'app-education',
+  templateUrl: './education.component.html',
+  styleUrls: ['./education.component.css'],
 })
-export class ExperienceComponent implements OnInit {
-  @Input() isExperiencia: boolean = false;
-
+export class EducationComponent implements OnInit {
   jwtValue: string = '';
   isLogged: boolean = false;
 
   section: Partial<Section> = {};
-  content: ExpContent[] = [];
+  content: EducationContent[] = [];
 
   constructor(
     private uiService: UiService,
@@ -31,12 +23,11 @@ export class ExperienceComponent implements OnInit {
   ) {
     this.uiService.LogState().subscribe((v) => (this.isLogged = v));
     this.authService.JwtState().subscribe((v) => (this.jwtValue = v));
+
     this.profileService
-      .getSection(SectionNames.EXPERIENCE)
+      .getSection(SectionNames.EDUCATION)
       .subscribe((v) => (this.section = v));
-    this.profileService
-      .getExperienceInfo()
-      .subscribe((v) => (this.content = v));
+    this.profileService.getEducationInfo().subscribe((v) => (this.content = v));
   }
 
   ngOnInit(): void {}
@@ -44,7 +35,7 @@ export class ExperienceComponent implements OnInit {
   onUpdatedTitleValue(newValue: UpdateKey) {
     let body = { [newValue.key]: newValue.value };
     this.profileService
-      .updateSectionTitle(body, this.jwtValue, SectionNames.EXPERIENCE)
+      .updateSectionTitle(body, this.jwtValue, SectionNames.EDUCATION)
       .subscribe((v) => {
         this.section = v;
       });
@@ -53,7 +44,7 @@ export class ExperienceComponent implements OnInit {
   onUpdatedValue(newValue: UpdateKey) {
     let body = { [newValue.key]: newValue.value };
     this.profileService
-      .updateExpItem(body, this.jwtValue, newValue.id!)
+      .updateEducationItem(body, this.jwtValue, newValue.id!)
       .subscribe((v) => {
         let newArray = this.content.map((el) => {
           if (el?.id === v.id) {
@@ -66,18 +57,15 @@ export class ExperienceComponent implements OnInit {
   }
 
   onAddItem() {
-    if (this.isExperiencia) {
-      this.profileService
-        .addExpItem(this.jwtValue)
-        .subscribe((v) => this.content.push(v));
-    }
+    this.profileService
+      .addEducationItem(this.jwtValue)
+      .subscribe((v) => this.content.push(v));
   }
+
   onRemoveItem(id: number) {
-    if (this.isExperiencia) {
-      this.profileService.deleteExpItem(this.jwtValue, id).subscribe((v) => {
-        let newArray = this.content.filter((el) => el.id !== id);
-        this.content = newArray;
-      });
-    }
+    this.profileService.deleteExpItem(this.jwtValue, id).subscribe((v) => {
+      let newArray = this.content.filter((el) => el.id !== id);
+      this.content = newArray;
+    });
   }
 }
