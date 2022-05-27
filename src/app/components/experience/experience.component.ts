@@ -22,12 +22,12 @@ export class ExperienceComponent
     super(uiService, profileService, authService);
 
     this.path = '/experience/job/';
-    this.sectionName = 'experience';
+    this.sectionName = '/section/experience';
 
     this.uiService.LogState().subscribe((v) => (this.isLogged = v));
     this.authService.JwtState().subscribe((v) => (this.jwtValue = v));
     this.profileService
-      .getSection(SectionNames.EXPERIENCE)
+      .getData(this.sectionName)
       .subscribe((v) => (this.section = v));
     this.profileService.getData(this.path).subscribe((v) => (this.content = v));
   }

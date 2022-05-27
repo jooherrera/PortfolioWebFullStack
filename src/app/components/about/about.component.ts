@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
 import { AboutContent, Section, SectionNames, UpdateKey } from 'src/types';
+import { ComponentBase } from '../ComponentBase';
 import { ExperienceComponent } from '../experience/experience.component';
 
 @Component({
@@ -10,46 +11,32 @@ import { ExperienceComponent } from '../experience/experience.component';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
 })
-export class AboutComponent implements OnInit {
-  isLogged: boolean = false;
-  jwtValue: string = '';
-
-  section: Partial<Section> = {};
-  aboutContent: Partial<AboutContent> = {};
-
+export class AboutComponent
+  extends ComponentBase<AboutContent>
+  implements OnInit
+{
   constructor(
-    private uiService: UiService,
-    private authService: AuthService,
-    private profileService: ProfileService
+    uiService: UiService,
+    profileService: ProfileService,
+    authService: AuthService
   ) {
+    super(uiService, profileService, authService);
+
+    this.path = '/section/about/';
+    this.sectionName = '/section/about';
+
     this.uiService.LogState().subscribe((v) => (this.isLogged = v));
     this.authService.JwtState().subscribe((v) => (this.jwtValue = v));
-    this.profileService.getSection(SectionNames.ABOUT).subscribe((v) => {
-      this.section = v;
-    });
-    this.profileService.getInfo('about').subscribe((v) => {
-      this.aboutContent = v;
-    });
+    this.profileService
+      .getData(this.sectionName)
+      .subscribe((v) => (this.section = v));
+    this.profileService.getData(this.path).subscribe((v) => (this.content = v));
   }
 
-  ngOnInit(): void {}
-
-  onUpdatedTitleValue(newValue: UpdateKey) {
-    console.log(newValue);
-
-    let body = { [newValue.key]: newValue.value };
-
-    this.profileService
-      .updateSectionTitle(body, this.jwtValue, 'about')
-      .subscribe((v) => {
-        this.section = v;
-      });
-  }
-
-  onUpdatedValue(newValue: UpdateKey) {
+  override onUpdatedValue(newValue: UpdateKey) {
     let body = { [newValue.key]: newValue.value };
     this.profileService
-      .updateInfo(body, this.jwtValue, 'about', newValue.id!)
-      .subscribe((v) => (this.aboutContent = v));
+      .updateItem(body, this.jwtValue, newValue.id!, this.path)
+      .subscribe((v) => (this.content = v));
   }
 }

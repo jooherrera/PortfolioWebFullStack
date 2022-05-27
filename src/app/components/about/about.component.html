@@ -22,13 +22,13 @@
     </visible-btn>
   </h2>
   <p>
-    {{ aboutContent?.paragraph }}
+    {{ content?.paragraph }}
     <editBtn
       *ngIf="isLogged"
       key="paragraph"
-      value="{{ aboutContent?.paragraph }}"
+      value="{{ content?.paragraph }}"
       [paragraph]="true"
-      [id]="aboutContent?.id"
+      [id]="content?.id"
       (updatedValue)="onUpdatedValue($event)"
     ></editBtn>
   </p>

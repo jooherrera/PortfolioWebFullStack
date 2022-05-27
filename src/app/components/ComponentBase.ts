@@ -11,7 +11,7 @@ export abstract class ComponentBase<T extends { id: number }> {
   jwtValue: string = '';
 
   section: Partial<Section> = {};
-  content: T[] = [];
+  content: any;
 
   path: string = '';
   sectionName: string = '';
@@ -38,7 +38,7 @@ export abstract class ComponentBase<T extends { id: number }> {
     this.profileService
       .updateItem(body, this.jwtValue, newValue.id!, this.path)
       .subscribe((v) => {
-        let newArray = this.content.map((el) => {
+        let newArray = this.content.map((el: any) => {
           if (el?.id === v.id) {
             return (el = v);
           }
@@ -57,7 +57,7 @@ export abstract class ComponentBase<T extends { id: number }> {
     this.profileService
       .deleteItem(this.jwtValue, id, this.path)
       .subscribe((v) => {
-        let newArray = this.content.filter((el) => el.id !== id);
+        let newArray = this.content.filter((el: any) => el.id !== id);
         this.content = newArray;
       });
   }

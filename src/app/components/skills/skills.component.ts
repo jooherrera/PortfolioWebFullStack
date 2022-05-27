@@ -10,71 +10,32 @@ import {
   Technology,
   UpdateKey,
 } from 'src/types';
+import { ComponentBase } from '../ComponentBase';
 
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css'],
 })
-export class SkillsComponent implements OnInit {
-  isLogged: boolean = false;
-  jwtValue: string = '';
-
-  section: Partial<Section> = {};
-  content: Technology[] = [];
-
+export class SkillsComponent
+  extends ComponentBase<Technology>
+  implements OnInit
+{
   constructor(
-    private uiService: UiService,
-    private profileService: ProfileService,
-    private authService: AuthService
+    uiService: UiService,
+    profileService: ProfileService,
+    authService: AuthService
   ) {
+    super(uiService, profileService, authService);
+
+    this.path = '/hard-skill/technology/';
+    this.sectionName = '/section/hard-skill';
+
     this.uiService.LogState().subscribe((v) => (this.isLogged = v));
     this.authService.JwtState().subscribe((v) => (this.jwtValue = v));
     this.profileService
-      .getSection(SectionNames.HSKILL)
+      .getData(this.sectionName)
       .subscribe((v) => (this.section = v));
-    this.profileService.getHardSkillInfo().subscribe((v) => (this.content = v));
-  }
-
-  ngOnInit(): void {}
-
-  ngOnChanges() {}
-
-  onUpdatedTitleValue(newValue: UpdateKey) {
-    let body = { [newValue.key]: newValue.value };
-    this.profileService
-      .updateSectionTitle(body, this.jwtValue, SectionNames.HSKILL)
-      .subscribe((v) => {
-        this.section = v;
-      });
-  }
-
-  onUpdatedValue(newValue: UpdateKey) {
-    let body = { [newValue.key]: newValue.value };
-    this.profileService
-      .updateHardSkillItem(body, this.jwtValue, newValue.id!)
-      .subscribe((v) => {
-        let newArray = this.content.map((el) => {
-          if (el?.id === v.id) {
-            return (el = v);
-          }
-          return el;
-        });
-        this.content = newArray;
-      });
-  }
-
-  onAddItem() {
-    this.profileService
-      .addHardSkillItem(this.jwtValue)
-      .subscribe((v) => this.content.push(v));
-  }
-  onRemoveItem(id: number) {
-    this.profileService
-      .deleteHardSkillItem(this.jwtValue, id)
-      .subscribe((v) => {
-        let newArray = this.content.filter((el) => el.id !== id);
-        this.content = newArray;
-      });
+    this.profileService.getData(this.path).subscribe((v) => (this.content = v));
   }
 }
