@@ -1,6 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
-import { HardSkill, HardSkillItem, UpdateKey } from 'src/types';
+import {
+  HardSkill,
+  HardSkillItem,
+  Section,
+  SectionNames,
+  Technology,
+  UpdateKey,
+} from 'src/types';
 
 @Component({
   selector: 'app-skills',
@@ -8,34 +17,64 @@ import { HardSkill, HardSkillItem, UpdateKey } from 'src/types';
   styleUrls: ['./skills.component.css'],
 })
 export class SkillsComponent implements OnInit {
-  @Input() info: Partial<HardSkill> = {};
   isLogged: boolean = false;
-  items: HardSkillItem[] = [];
+  jwtValue: string = '';
 
-  constructor(private uiService: UiService) {
+  section: Partial<Section> = {};
+  content: Technology[] = [];
+
+  constructor(
+    private uiService: UiService,
+    private profileService: ProfileService,
+    private authService: AuthService
+  ) {
     this.uiService.LogState().subscribe((v) => (this.isLogged = v));
+    this.authService.JwtState().subscribe((v) => (this.jwtValue = v));
+    this.profileService
+      .getSection(SectionNames.HSKILL)
+      .subscribe((v) => (this.section = v));
+    this.profileService.getHardSkillInfo().subscribe((v) => (this.content = v));
   }
 
   ngOnInit(): void {}
 
-  ngOnChanges() {
-    this.items = this.info?.items || [];
+  ngOnChanges() {}
+
+  onUpdatedTitleValue(newValue: UpdateKey) {
+    let body = { [newValue.key]: newValue.value };
+    this.profileService
+      .updateSectionTitle(body, this.jwtValue, SectionNames.HSKILL)
+      .subscribe((v) => {
+        this.section = v;
+      });
   }
+
   onUpdatedValue(newValue: UpdateKey) {
-    if (newValue.position !== undefined) {
-      this.items[newValue.position] = {
-        ...this.items[newValue.position],
-        [`${newValue.key}`]: newValue.value,
-      };
-      this.info = {
-        ...this.info,
-        items: this.items,
-      };
-      return;
-    }
-    this.info = {
-      ...this.info,
-      [newValue.key]: newValue.value,
-    };
+    let body = { [newValue.key]: newValue.value };
+    this.profileService
+      .updateHardSkillItem(body, this.jwtValue, newValue.id!)
+      .subscribe((v) => {
+        let newArray = this.content.map((el) => {
+          if (el?.id === v.id) {
+            return (el = v);
+          }
+          return el;
+        });
+        this.content = newArray;
+      });
+  }
+
+  onAddItem() {
+    this.profileService
+      .addHardSkillItem(this.jwtValue)
+      .subscribe((v) => this.content.push(v));
+  }
+  onRemoveItem(id: number) {
+    this.profileService
+      .deleteHardSkillItem(this.jwtValue, id)
+      .subscribe((v) => {
+        let newArray = this.content.filter((el) => el.id !== id);
+        this.content = newArray;
+      });
   }
 }

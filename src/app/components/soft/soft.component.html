@@ -1,16 +1,28 @@
-<div class="container Recuadro">
+<div
+  class="container Recuadro"
+  *ngIf="(section?.visible && !isLogged) || isLogged"
+>
   <h2 class="Title">
-    {{ info?.title }}
+    {{ section?.sectionTitle }}
     <editBtn
       *ngIf="isLogged"
-      key="title"
-      value="{{ info?.title }}"
-      (updatedValue)="onUpdatedValue($event)"
+      key="sectionTitle"
+      value="{{ section?.sectionTitle }}"
+      (updatedValue)="onUpdatedTitleValue($event)"
     ></editBtn>
+    <addBtn *ngIf="isLogged" [addBtn]="true" (click)="onAddItem()"></addBtn>
+    <visible-btn
+      *ngIf="isLogged"
+      [isVisible]="section?.visible"
+      key="visible"
+      (toggleVisibility)="onUpdatedTitleValue($event)"
+      [id]="section?.id"
+    >
+    </visible-btn>
   </h2>
   <!-- <editable data="{{ info?.title }}" heading="Title"></editable> -->
 
-  <div class="Soft_Item" *ngFor="let item of info?.items; index as i">
+  <div class="Soft_Item" *ngFor="let item of content">
     <h3>
       {{ item.name }}
       <editBtn
@@ -18,8 +30,13 @@
         key="name"
         value="{{ item.name }}"
         (updatedValue)="onUpdatedValue($event)"
-        [position]="i"
+        [id]="item.id"
       ></editBtn>
+      <addBtn
+        *ngIf="isLogged"
+        [removeBtn]="true"
+        (click)="onRemoveItem(item?.id!)"
+      ></addBtn>
     </h3>
     <!-- <editable
       data="{{ item.name }}"
@@ -34,7 +51,7 @@
         key="porcent"
         value="{{ item.porcent }}"
         (updatedValue)="onUpdatedValue($event)"
-        [position]="i"
+        [id]="item.id"
       ></editBtn>
       <div class="Box_Total">
         <div class="Box_Porcentaje" style.width="{{ item.porcent }}%"></div>

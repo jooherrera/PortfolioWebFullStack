@@ -11,6 +11,8 @@ import {
   ProfileInfo,
   Section,
   EducationContent,
+  Technology,
+  Skill,
 } from 'src/types';
 
 @Injectable({
@@ -174,6 +176,75 @@ export class ProfileService {
       `${this.url}${this.apiV1}/education/institution/${id}`,
       { headers: { Authorization: jwt } }
     );
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                 HardSkill                                 */
+  /* -------------------------------------------------------------------------- */
+
+  getHardSkillInfo(): Observable<Technology[]> {
+    return this.http.get<Technology[]>(
+      `${this.url}${this.apiV1}/hard-skill/technology/`
+    );
+  }
+
+  addHardSkillItem(jwt: string): Observable<Technology> {
+    return this.http.post<Technology>(
+      `${this.url}${this.apiV1}/hard-skill/technology/`,
+      {
+        headers: { Authorization: jwt },
+      }
+    );
+  }
+
+  updateHardSkillItem(
+    info: Partial<Technology>,
+    jwt: string,
+    id: number
+  ): Observable<Technology> {
+    return this.http.patch<Technology>(
+      `${this.url}${this.apiV1}/hard-skill/technology/${id}`,
+      info,
+      { headers: { Authorization: jwt } }
+    );
+  }
+
+  deleteHardSkillItem(jwt: string, id: number): Observable<any> {
+    return this.http.delete<any>(
+      `${this.url}${this.apiV1}/hard-skill/technology/${id}`,
+      { headers: { Authorization: jwt } }
+    );
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                General  CRUD                                */
+  /* -------------------------------------------------------------------------- */
+
+  getData(path: string): Observable<any[]> {
+    return this.http.get<Skill[]>(`${this.url}${this.apiV1}${path}`);
+  }
+
+  addItem(jwt: string, path: string): Observable<any> {
+    return this.http.post<any>(`${this.url}${this.apiV1}${path}`, {
+      headers: { Authorization: jwt },
+    });
+  }
+
+  updateItem(
+    info: Partial<any>,
+    jwt: string,
+    id: number,
+    path: string
+  ): Observable<any> {
+    return this.http.patch<any>(`${this.url}${this.apiV1}${path}${id}`, info, {
+      headers: { Authorization: jwt },
+    });
+  }
+
+  deleteItem(jwt: string, id: number, path: string): Observable<any> {
+    return this.http.delete<any>(`${this.url}${this.apiV1}${path}${id}`, {
+      headers: { Authorization: jwt },
+    });
   }
 
   // updateAbout(info: Partial<About>, jwt: string): Observable<About> {

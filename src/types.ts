@@ -15,6 +15,7 @@ export type UpdateKey = {
   value: string;
   position: number | undefined;
   id: number | undefined;
+  sectionName?: string;
 };
 
 export type Profile = {
@@ -167,3 +168,17 @@ export enum SectionNames {
   SSKILL = 'soft-skill',
   PROJECT = 'project',
 }
+
+export type Technology = {
+  [key: string]: string | number;
+  id: number;
+  name: string;
+  logoUrl: string;
+};
+
+export type Skill = {
+  [key: string]: string | number;
+  id: number;
+  name: string;
+  porcent: string;
+};

@@ -1,44 +1,32 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
-import { SoftSkill, SoftSkillItem, UpdateKey } from 'src/types';
+
+import { SectionNames, Skill } from 'src/types';
+import { ComponentBase } from '../ComponentBase';
 
 @Component({
   selector: 'app-soft',
   templateUrl: './soft.component.html',
   styleUrls: ['./soft.component.css'],
 })
-export class SoftComponent implements OnInit {
-  @Input() info: Partial<SoftSkill> = {};
-  items: SoftSkillItem[] = [];
-  isLogged: boolean = false;
-  constructor(private uiService: UiService) {
+export class SoftComponent extends ComponentBase<Skill> implements OnInit {
+  constructor(
+    uiService: UiService,
+    profileService: ProfileService,
+    authService: AuthService
+  ) {
+    super(uiService, profileService, authService);
+
+    this.path = '/soft-skill/skill/';
+    this.sectionName = 'soft-skill';
+
     this.uiService.LogState().subscribe((v) => (this.isLogged = v));
-  }
-  ngOnInit(): void {}
-
-  ngOnChanges() {
-    this.items = this.info?.items || [];
-  }
-
-  onUpdatedValue(newValue: UpdateKey) {
-    if (newValue.position !== undefined) {
-      this.items[newValue.position] = {
-        ...this.items[newValue.position],
-        [`${newValue.key}`]: newValue.value,
-      };
-
-      this.info = {
-        ...this.info,
-        items: this.items,
-      };
-      console.log(this.info);
-      return;
-    }
-
-    this.info = {
-      ...this.info,
-      [newValue.key]: newValue.value,
-    };
-    console.log(this.info);
+    this.authService.JwtState().subscribe((v) => (this.jwtValue = v));
+    this.profileService
+      .getSection(SectionNames.SSKILL)
+      .subscribe((v) => (this.section = v));
+    this.profileService.getData(this.path).subscribe((v) => (this.content = v));
   }
 }
