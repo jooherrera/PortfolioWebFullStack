@@ -54,11 +54,17 @@
 }
 @media (min-width: 576px) {
   .Project_Item {
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 50px;
     padding: 10px;
   }
   .Project_Item__Box h5 {
     margin-left: 15px;
+  }
+
+  .Project_Item h3 {
+    font-size: 1.3rem;
+  }
+  .Project_Item h4 {
+    font-size: 1rem;
   }
 }

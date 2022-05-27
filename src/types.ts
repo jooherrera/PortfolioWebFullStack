@@ -45,14 +45,7 @@ export type Project = {
   title: string;
   items: ProjectItem[];
 };
-export type ProjectItem = {
-  [key: string]: string | number;
-  id: number;
-  name: string;
-  description: string;
-  webLink: string;
-  githubLink: string;
-};
+
 export type SoftSkill = {
   title: string;
   items: SoftSkillItem[];
@@ -181,4 +174,13 @@ export type Skill = {
   id: number;
   name: string;
   porcent: string;
+};
+
+export type ProjectItem = {
+  [key: string]: string | number;
+  id: number;
+  name: string;
+  description: string;
+  webLink: string;
+  githubLink: string;
 };
