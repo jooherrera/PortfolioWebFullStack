@@ -3,5 +3,5 @@ export const environment = {
   env: 'Staging',
   urlGithub: 'https://github.com/jooherrera',
   urlLinkedin: 'https://www.linkedin.com/in/herrera-jl/',
-  url: 'http://localhost:8080',
+  url: 'https://localhost:8080',
 };

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/services/auth.service';
 import { UiService } from 'src/app/services/ui.service';
 import { environment } from 'src/environments/environment';
 
@@ -14,7 +13,7 @@ type Links = {
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  env = environment.env;
+  env = environment.env === 'Production' ? '' : environment.env;
   links: Links = {
     Github: environment.urlGithub,
     Linkedin: environment.urlLinkedin,
@@ -24,7 +23,7 @@ export class NavbarComponent implements OnInit {
   subscription?: Subscription;
   subscriptionLog?: Subscription;
 
-  constructor(private uiService: UiService, private authService: AuthService) {
+  constructor(private uiService: UiService) {
     this.subscription = this.uiService
       .LoginModalState()
       .subscribe((v) => (this.showLoginModal = v));
@@ -33,10 +32,7 @@ export class NavbarComponent implements OnInit {
       .subscribe((v) => (this.isLogged = v));
   }
 
-  ngOnInit(): void {
-    //Borrar esto
-    // this.uiService.logIn();
-  }
+  ngOnInit(): void {}
 
   goTo(Title: string) {
     window.open(this.links[Title], '_blank');
