@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
-import { EducationContent } from 'src/types';
 import { ComponentBase } from '../ComponentBase';
 
 @Component({
@@ -10,10 +9,7 @@ import { ComponentBase } from '../ComponentBase';
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.css'],
 })
-export class EducationComponent
-  extends ComponentBase<EducationContent>
-  implements OnInit
-{
+export class EducationComponent extends ComponentBase implements OnInit {
   constructor(
     uiService: UiService,
     profileService: ProfileService,

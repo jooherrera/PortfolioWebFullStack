@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Section, SectionNames, UpdateKey } from 'src/types';
+import { Section, UpdateKey } from 'src/types';
 import { AuthService } from '../services/auth.service';
 import { ProfileService } from '../services/profile.service';
 import { UiService } from '../services/ui.service';
 @Component({
   template: '',
 })
-export abstract class ComponentBase<T extends { id: number }> {
+export abstract class ComponentBase {
   isLogged: boolean = false;
   jwtValue: string = '';
 

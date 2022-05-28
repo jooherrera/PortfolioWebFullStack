@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { UiService } from 'src/app/services/ui.service';
-import { Credenciales } from 'src/types';
+import { Credenciales, UpdateKey } from 'src/types';
 
 @Component({
   selector: 'app-modal',
@@ -39,7 +38,6 @@ export class ModalComponent implements OnInit {
 
     const credenciales: Credenciales = { email, password };
     this.authService.login(credenciales);
-    // this.onLogin.emit(credenciales);
     this.email = '';
     this.password = '';
   }

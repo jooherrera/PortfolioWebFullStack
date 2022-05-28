@@ -5,9 +5,9 @@ import {
   Input,
   OnInit,
   Output,
-  Renderer2,
   ViewChild,
 } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { UiService } from 'src/app/services/ui.service';
 import { UpdateKey } from 'src/types';
 
@@ -21,10 +21,11 @@ export class EditBtnComponent implements OnInit {
   isEditable: boolean = false;
   isImgSrc: boolean = false;
 
+  @Input() title: String = 'Editor';
+
   @Input() key: string = '';
   @Input() value: string = '';
   @Input() paragraph: boolean = false;
-  @Input() position: number | undefined = undefined;
   @Input() id: number | undefined = undefined;
   @Input() fileUpload: boolean = false;
   @ViewChild('keyValue') field: ElementRef = new ElementRef(Input);
@@ -32,9 +33,7 @@ export class EditBtnComponent implements OnInit {
   @Output() updatedValue: EventEmitter<UpdateKey> =
     new EventEmitter<UpdateKey>();
 
-  constructor(private uiService: UiService) {
-    this.uiService.LogState().subscribe((v) => (this.isLogged = v));
-  }
+  constructor(private uiService: UiService) {}
 
   onFileChange(event: any) {
     const reader = new FileReader();
@@ -71,7 +70,6 @@ export class EditBtnComponent implements OnInit {
     const body: UpdateKey = {
       key: this.key,
       value: this.value,
-      position: this.position,
       id: this.id,
     };
     this.updatedValue.emit(body);

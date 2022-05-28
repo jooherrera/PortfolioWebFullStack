@@ -1,15 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
-import {
-  HardSkill,
-  HardSkillItem,
-  Section,
-  SectionNames,
-  Technology,
-  UpdateKey,
-} from 'src/types';
+
 import { ComponentBase } from '../ComponentBase';
 
 @Component({
@@ -17,10 +10,7 @@ import { ComponentBase } from '../ComponentBase';
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css'],
 })
-export class SkillsComponent
-  extends ComponentBase<Technology>
-  implements OnInit
-{
+export class SkillsComponent extends ComponentBase implements OnInit {
   constructor(
     uiService: UiService,
     profileService: ProfileService,

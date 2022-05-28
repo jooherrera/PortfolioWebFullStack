@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
-import { ContactContent, PersonInfo, ProfileInfo, UpdateKey } from 'src/types';
+import { ContactContent, PersonInfo, UpdateKey } from 'src/types';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +10,6 @@ import { ContactContent, PersonInfo, ProfileInfo, UpdateKey } from 'src/types';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  @Input() info: Partial<ProfileInfo> = {};
-
   isLogged: boolean = false;
   jtwValue: string = '';
 

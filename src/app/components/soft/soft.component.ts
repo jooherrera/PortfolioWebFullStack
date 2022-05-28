@@ -3,7 +3,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
 
-import { Skill } from 'src/types';
 import { ComponentBase } from '../ComponentBase';
 
 @Component({
@@ -11,7 +10,7 @@ import { ComponentBase } from '../ComponentBase';
   templateUrl: './soft.component.html',
   styleUrls: ['./soft.component.css'],
 })
-export class SoftComponent extends ComponentBase<Skill> implements OnInit {
+export class SoftComponent extends ComponentBase implements OnInit {
   constructor(
     uiService: UiService,
     profileService: ProfileService,

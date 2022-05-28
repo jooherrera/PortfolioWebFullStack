@@ -1,25 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {
-  AboutContent,
-  ContactContent,
-  ExpEducation,
-  ExpContent,
-  PersonInfo,
-  Profile,
-  ProfileInfo,
-  Section,
-  EducationContent,
-  Technology,
-  Skill,
-} from 'src/types';
+import { ContactContent, PersonInfo, Section } from 'src/types';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProfileService {
-  url = 'http://192.168.1.108:8080';
+  url = environment.url;
   apiV1 = '/api/v1';
   constructor(private http: HttpClient) {}
 
@@ -58,10 +47,6 @@ export class ProfileService {
   }
 
   /* ------------------------------ SECTION TITLE ----------------------------- */
-
-  // getSection(path: string): Observable<Section> {
-  //   return this.http.get<Section>(`${this.url}${this.apiV1}/section/${path}`);
-  // }
 
   updateSectionTitle(
     info: Partial<Section>,
@@ -102,20 +87,5 @@ export class ProfileService {
     return this.http.delete<any>(`${this.url}${this.apiV1}${path}${id}`, {
       headers: { Authorization: jwt },
     });
-  }
-
-  // updateAbout(info: Partial<About>, jwt: string): Observable<About> {
-  //   console.log(info);
-  //   console.log('token: ' + jwt);
-  //   return this.http.patch<About>(`${this.url}/about`, info);
-  // }
-
-  updateProfile(
-    info: Partial<ProfileInfo>,
-    jwt: string
-  ): Observable<ProfileInfo> {
-    console.log(info);
-    console.log('token: ' + jwt);
-    return this.http.patch<ProfileInfo>(`${this.url}/profile-info`, info);
   }
 }

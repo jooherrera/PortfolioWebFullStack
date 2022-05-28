@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { UiService } from 'src/app/services/ui.service';
 import { environment } from 'src/environments/environment';
-import { Credenciales } from 'src/types';
 
 type Links = {
   [key: string]: string;
@@ -47,7 +46,6 @@ export class NavbarComponent implements OnInit {
       this.uiService.logOut();
       return;
     }
-
     this.uiService.openLoginModal();
   }
 }

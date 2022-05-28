@@ -1,20 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UiService } from 'src/app/services/ui.service';
-import { AboutContent, Section, SectionNames, UpdateKey } from 'src/types';
+import { UpdateKey } from 'src/types';
 import { ComponentBase } from '../ComponentBase';
-import { ExperienceComponent } from '../experience/experience.component';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
 })
-export class AboutComponent
-  extends ComponentBase<AboutContent>
-  implements OnInit
-{
+export class AboutComponent extends ComponentBase implements OnInit {
   constructor(
     uiService: UiService,
     profileService: ProfileService,

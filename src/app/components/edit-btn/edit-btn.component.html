@@ -6,15 +6,13 @@
   (click)="onOpenEdit()"
   *ngIf="!fileUpload"
 />
+
 <div class="fileUpload" *ngIf="fileUpload" (click)="onOpenEdit()"></div>
 
 <div class="modalDialog {{ isEditable && 'show ' }} ">
   <div>
-    <h2 class="TitleModal">Editor</h2>
-    <!-- <form (ngSubmit)="onSubmit()"> -->
+    <h2 class="TitleModal">{{ title }}</h2>
     <div class="mb-3 inputContainer">
-      <!-- <label for="keyValue" class="form-label">Key</label> -->
-
       <input
         *ngIf="!paragraph && !fileUpload"
         type="text"

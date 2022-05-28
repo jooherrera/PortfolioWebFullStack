@@ -31,6 +31,11 @@
         (updatedValue)="onUpdatedValue($event)"
         [id]="item.id"
       ></editBtn>
+      <addBtn
+        *ngIf="isLogged"
+        [removeBtn]="true"
+        (click)="onRemoveItem(item.id)"
+      ></addBtn>
     </h2>
     <h3>
       {{ item.description }}

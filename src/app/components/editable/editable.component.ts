@@ -9,7 +9,7 @@ import {
 import { UiService } from 'src/app/services/ui.service';
 
 @Component({
-  selector: 'editable',
+  selector: 'editableeeeeeee',
   templateUrl: './editable.component.html',
   styleUrls: ['./editable.component.css'],
 })
