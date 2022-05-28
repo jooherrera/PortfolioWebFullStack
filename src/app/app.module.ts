@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { BtnLogComponent } from './components/navbar/btn-log/btn-log.component';
 import { BtnRedSocialComponent } from './components/navbar/btn-red-social/btn-red-social.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './components/modalLogin/modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
-import { EditableComponent } from './components/editable/editable.component';
 import { CursoComponent } from './components/curso/curso.component';
 import { ButtonComponent } from './components/button/button.component';
 import { VisibleBtnComponent } from './components/visible-btn/visible-btn.component';
@@ -27,7 +25,6 @@ import { EducationComponent } from './components/education/education.component';
   declarations: [
     AppComponent,
     NavbarComponent,
-    BtnLogComponent,
     BtnRedSocialComponent,
     HeaderComponent,
     AboutComponent,
@@ -37,7 +34,6 @@ import { EducationComponent } from './components/education/education.component';
     ProjectsComponent,
     ModalComponent,
     EditBtnComponent,
-    EditableComponent,
     CursoComponent,
     ButtonComponent,
     VisibleBtnComponent,

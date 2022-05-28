@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { UiService } from 'src/app/services/ui.service';
-import { Credenciales, UpdateKey } from 'src/types';
+import { Credenciales } from 'src/types';
 
 @Component({
   selector: 'app-modal',

@@ -43,6 +43,7 @@
         *ngIf="isLogged"
         key="description"
         value="{{ item.description }}"
+        [paragraph]="true"
         (updatedValue)="onUpdatedValue($event)"
         [id]="item.id"
       ></editBtn>

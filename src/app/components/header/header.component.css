@@ -1,18 +1,12 @@
 header {
   width: auto;
-  /* height: 400px; */
   height: max-content;
-  /* background-color: red; */
-  /* overflow: hidden; */
   padding: 0;
   position: relative;
 }
 
 .Banner {
   height: 150px;
-  /* background-image: url("/assets/banner.webp"); */
-  /* background-position: right center;
-  background-size: cover; */
 }
 
 .Banner .imgBanner {
@@ -49,7 +43,6 @@ header {
   font-family: "Montserrat500";
   font-weight: bold;
   font-size: 2rem;
-  /* color: #363636; */
 }
 
 .ProfileInfo h3 {
@@ -61,8 +54,6 @@ header {
   color: dodgerblue;
   cursor: pointer;
   transition: 0.7s ease-in-out;
-  /* margin: 0px 10px !important; */
-  /* margin-bottom: 20px; */
 }
 
 .collapse2 {
@@ -101,9 +92,6 @@ header {
     width: 200px;
     height: 200px;
     top: 200px;
-
-    /* bottom: 0; */
-    /* margin: auto;  */
     margin-left: 35px;
   }
 

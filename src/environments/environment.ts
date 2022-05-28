@@ -7,7 +7,7 @@ export const environment = {
   env: 'Development',
   urlGithub: 'https://github.com/jooherrera',
   urlLinkedin: 'https://www.linkedin.com/in/herrera-jl/',
-  url: 'https://localhost:8080',
+  url: 'http://localhost:8080',
 };
 
 /*

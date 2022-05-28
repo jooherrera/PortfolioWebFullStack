@@ -20,8 +20,6 @@
     >
     </visible-btn>
   </h2>
-  <!-- <editable data="{{ info?.title }}" heading="Title"></editable> -->
-
   <div class="Soft_Item" *ngFor="let item of content">
     <h3>
       {{ item.name }}
@@ -38,13 +36,6 @@
         (click)="onRemoveItem(item?.id!)"
       ></addBtn>
     </h3>
-    <!-- <editable
-      data="{{ item.name }}"
-      heading="DisplaySubH2"
-      [withPorcent]="true"
-      [dataPorcent]="item.porcent"
-    ></editable> -->
-
     <div class="d-flex w-100 justify-content-center">
       <editBtn
         *ngIf="isLogged"

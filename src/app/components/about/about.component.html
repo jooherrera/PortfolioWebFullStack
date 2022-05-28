@@ -2,7 +2,6 @@
   class="container Recuadro"
   *ngIf="(section?.visible && !isLogged) || isLogged"
 >
-  <!-- <editable data="{{ info?.title }}" heading="Title"></editable> -->
   <h2>
     {{ section?.sectionTitle }}
     <editBtn
@@ -32,15 +31,4 @@
       (updatedValue)="onUpdatedValue($event)"
     ></editBtn>
   </p>
-  <!-- <p *ngFor="let item of info?.items; index as i">
-    {{ item }}
-    <editBtn
-      *ngIf="isLogged"
-      key="item"
-      value="{{ item }}"
-      [paragraph]="true"
-      (updatedValue)="onUpdatedValue($event)"
-      [position]="i"
-    ></editBtn>
-  </p> -->
 </div>
