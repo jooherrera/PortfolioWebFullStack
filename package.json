@@ -7,9 +7,7 @@
     "start2": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "server": "json-server --watch --host 192.168.1.108 db.json --port 5000",
-    "server2": "json-server --watch --host 192.168.1.108 db2.json --port 5001"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
