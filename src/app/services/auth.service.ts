@@ -47,7 +47,6 @@ export class AuthService {
   setLoginError(): void {
     this.isLoginError = true;
     this.loginErrorState.next(this.isLoginError);
-    console.log(this.isLoginError);
   }
 
   clearLoginError(): void {

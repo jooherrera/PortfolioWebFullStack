@@ -88,7 +88,6 @@ export class CursoComponent extends ComponentBase implements OnInit {
           }
           return el;
         });
-        console.log(newArray);
         this.content = newArray;
       });
   }
