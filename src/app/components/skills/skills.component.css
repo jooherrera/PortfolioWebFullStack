@@ -32,9 +32,12 @@
 }
 @media (min-width: 576px) {
   .Skill_Item__ImageContainer {
-    width: 60px;
-    height: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    height: 100px;
+    position: relative;
   }
+
   .Skill_Item__Title {
     font-size: 1.7rem;
   }
@@ -44,6 +47,10 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+
+  h6 {
+    font-size: 1.8rem;
   }
 
   .Skill_Item {
