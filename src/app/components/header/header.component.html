@@ -1,7 +1,11 @@
 <header class="container">
   <div class="Banner  {{ isLogged ? 'canClick' : '' }} ">
     <img
-      [src]="personContent?.bannerImg"
+      [src]="
+        personContent?.bannerImg
+          ? personContent?.bannerImg
+          : '/assets/bannerDefault.webp'
+      "
       alt="Banner de perfil"
       width="auto"
       height="auto"
@@ -18,7 +22,11 @@
 
   <div class="Profile  {{ isLogged ? 'canClick' : '' }}">
     <img
-      [src]="personContent?.profileImg"
+      [src]="
+        personContent?.profileImg
+          ? personContent?.profileImg
+          : '/assets/defaultProfile.webp'
+      "
       alt="Foto de perfil"
       width="auto"
       height="auto"
